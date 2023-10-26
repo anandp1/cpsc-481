@@ -6,14 +6,14 @@ import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft
 const Navigation = () => {
   return (
     <>
-      <nav className="relative flex flex-col sm:px-2 mt-2 w-full justify-evenly bg-blue-500 py-2">
+      <nav className="relative flex flex-col sm:px-2 mt-auto w-full justify-evenly bg-gray-300 py-2">
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center">
-            <ArrowLeftOnRectangleIcon className="w-6 h-6 text-white" />
-            <p className="text-white text-sm font-bold">Signout</p>
+            <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-900" />
+            <p className="text-gray-900 text-sm font-bold">Signout</p>
           </div>
-          <HomeIcon className="w-6 h-6 text-white" />
-          <SubdirectoryArrowLeftIcon className="w-6 h-6 text-white" />
+          <HomeIcon className="w-6 h-6 text-gray-900" />
+          <SubdirectoryArrowLeftIcon className="w-6 h-6 text-gray-900" />
         </div>
       </nav>
     </>
