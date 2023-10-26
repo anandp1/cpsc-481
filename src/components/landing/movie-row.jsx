@@ -1,19 +1,23 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CalendarDaysIcon,
+} from "@heroicons/react/20/solid";
 import MovieComponent from "./movie";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
 
-const MovieRow = ({ randomId, movieByTimeKey }) => {
+const MovieRow = ({ rowIndex, movieByTimeKey }) => {
   const slideLeft = () => {
-    let slider = document.getElementById("slider" + randomId);
+    let slider = document.getElementById("slider" + rowIndex);
     if (slider) {
       slider.scrollLeft = slider.scrollLeft - window.innerWidth + 200;
     }
   };
 
   const slideRight = () => {
-    let slider = document.getElementById("slider" + randomId);
+    let slider = document.getElementById("slider" + rowIndex);
     if (slider) {
       slider.scrollLeft = slider.scrollLeft + window.innerWidth - 200;
     }
@@ -30,6 +34,11 @@ const MovieRow = ({ randomId, movieByTimeKey }) => {
             >
               {movieByTimeKey}
             </h2>
+            {rowIndex === 0 && (
+              <div className="ml-auto border border-black mr-12 w-10 hover:cursor-pointer">
+                <CalendarDaysIcon className="w-6 h-6 text-gray-900 mt-0.5 mx-auto text-center" />
+              </div>
+            )}
           </div>
 
           <Fade duration={2000} cascade={true}>
@@ -44,7 +53,7 @@ const MovieRow = ({ randomId, movieByTimeKey }) => {
               </Fade>
 
               <div
-                id={"slider" + randomId}
+                id={"slider" + rowIndex}
                 className="w-full h-full mb-3 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative antialiased tracking-wider"
               >
                 {movieByTime[movieByTimeKey].map((movie, index) => {

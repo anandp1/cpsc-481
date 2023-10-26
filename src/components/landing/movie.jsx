@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import classNames from "classnames";
+import EventSeat from "@mui/icons-material/EventSeat";
 
 const MovieComponent = ({ movie, index, isLastMovie }) => {
   const movieMargin =
@@ -19,10 +20,14 @@ const MovieComponent = ({ movie, index, isLastMovie }) => {
         src={movie.imagePath}
         alt={movie.title}
       />
-      <div className="absolute top-0 left-0 w-full h-full hover:bg-neutral-900/80 opacity-0 hover:opacity-100 text-white">
+      <div className="absolute top-0 left-0 w-full h-80 hover:bg-neutral-900/80 opacity-0 hover:opacity-100 text-white">
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center ">
           {movie.title}
         </p>
+      </div>
+      <div className="flex flex-row">
+        <p>{movie.duration}</p>
+        <EventSeat className="ml-auto w-6 h-6 text-gray-900 border border-black rounded-full" />
       </div>
     </div>
   );

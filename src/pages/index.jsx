@@ -9,7 +9,7 @@ export default function Home() {
         <div className="flex flex-col overflow-y-auto">
           {Object.keys(movieByTime).map((time, index) => {
             return (
-              <MovieRow key={time} randomId={index} movieByTimeKey={time} />
+              <MovieRow key={time} rowIndex={index} movieByTimeKey={time} />
             );
           })}
         </div>
