@@ -25,7 +25,7 @@ const MovieRow = ({ randomId, movieByTimeKey }) => {
         <div className="flex flex-col">
           <div className="flex flex-row my-6 h-full sm:ml-14">
             <h2
-              className="text-white col-span-6 sm:text-lg md:text-xl lg:text-2xl font-bold px-2 tracking-wider"
+              className="text-gray-900 col-span-6 sm:text-lg md:text-xl lg:text-2xl font-semibold px-2 tracking-wide"
               id="nav-title"
             >
               {movieByTimeKey}
@@ -38,7 +38,7 @@ const MovieRow = ({ randomId, movieByTimeKey }) => {
                 <div className="group relative hidden sm:block h-full px-6 sm:px-9 my-auto">
                   <ChevronLeftIcon
                     onClick={slideLeft}
-                    className="absolute top-0 bottom-0 right-4 sm:right-12 m-auto w-10 h-10 cursor-pointer opacity-10 hover:opacity-80 text-white"
+                    className="absolute top-0 bottom-0 right-4 sm:right-12 m-auto w-10 h-10 cursor-pointer opacity-40 hover:opacity-80 text-gray-900"
                   />
                 </div>
               </Fade>
@@ -65,7 +65,7 @@ const MovieRow = ({ randomId, movieByTimeKey }) => {
                 <div className="group relative hidden sm:block h-full px-9 my-auto">
                   <ChevronRightIcon
                     onClick={slideRight}
-                    className="absolute top-0 bottom-0 sm:left-12 m-auto w-10 h-10 cursor-pointer opacity-10 hover:opacity-80 text-white"
+                    className="absolute top-0 bottom-0 sm:left-12 m-auto w-10 h-10 cursor-pointer opacity-40 hover:opacity-80 text-gray-900"
                   />
                 </div>
               </Fade>

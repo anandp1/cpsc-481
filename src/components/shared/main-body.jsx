@@ -4,8 +4,8 @@ import { SideCart } from "./side-cart";
 
 const MainBody = ({ children }) => {
   return (
-    <div className="bg-slate-800">
-      <div className="pl-6 flex flex-row min-h-screen max-h-screen">
+    <div className="bg-gray-200 bg-opacity-80">
+      <div className="flex flex-row min-h-screen max-h-screen">
         <div className="flex flex-col w-3/4">
           {children}
           <Navigation />
