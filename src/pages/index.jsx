@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <div className="flex flex-col overflow-y-auto">
+        <div className="flex flex-col overflow-y-auto my-2">
           {Object.keys(movieByTime).map((time, index) => {
             return (
               <MovieRow key={time} rowIndex={index} movieByTimeKey={time} />

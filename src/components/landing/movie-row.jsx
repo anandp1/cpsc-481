@@ -4,7 +4,7 @@ import {
   CalendarDaysIcon,
 } from "@heroicons/react/20/solid";
 import MovieComponent from "./movie";
-import React from "react";
+import React, { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
 
@@ -23,8 +23,17 @@ const MovieRow = ({ rowIndex, movieByTimeKey }) => {
     }
   };
 
+  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
+  const handleClose = () => setIsMovieModalOpen(false);
+
   return (
     <>
+      {isMovieModalOpen && (
+        <MovieModal
+          isMovieModalOpen={isMovieModalOpen}
+          handleClose={handleClose}
+        />
+      )}
       <Fade triggerOnce={true}>
         <div className="flex flex-col">
           <div className="flex flex-row my-6 h-full sm:ml-14">
@@ -59,6 +68,7 @@ const MovieRow = ({ rowIndex, movieByTimeKey }) => {
                 {movieByTime[movieByTimeKey].map((movie, index) => {
                   return (
                     <MovieComponent
+                      setIsMovieModalOpen={setIsMovieModalOpen}
                       movie={movie}
                       key={movie.id}
                       index={index}
