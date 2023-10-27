@@ -14,7 +14,7 @@ const style = {
   p: 4,
 };
 
-const ChildModal = ({ isChildModalOpen, setIsChildModalOpen }) => {
+export const ChildModal = ({ isChildModalOpen, setIsChildModalOpen }) => {
   const handleClose = () => {
     setIsChildModalOpen(false);
   };
@@ -51,8 +51,6 @@ const ChildModal = ({ isChildModalOpen, setIsChildModalOpen }) => {
             </div>
             <hr className="my-2 border-t border-gray-300" />
           </div>
-
-          {/* <Button onClick={handleClose}>Close Child Modal</Button> */}
         </Box>
       </Modal>
     </Fragment>

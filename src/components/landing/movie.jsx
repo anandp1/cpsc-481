@@ -1,20 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 import classNames from "classnames";
 import EventSeat from "@mui/icons-material/EventSeat";
+import { useState } from "react";
+import { InformationCircleIcon } from "@heroicons/react/20/solid";
+import { ChildModal } from "../modal/movie-modal";
 
-const MovieComponent = ({ movie, index, isLastMovie }) => {
+const MovieComponent = ({ movie, index, isLastMovie, setIsMovieModalOpen }) => {
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+
   const movieMargin =
     isLastMovie && index !== 0
       ? "ml-2 sm:ml-4 md:ml-7"
       : "mr-2 sm:mr-4 md:mr-7";
   return (
     <div
-      key={movie.id}
+      onClick={() => setIsMovieModalOpen(true)}
       className={classNames(
         "w-[130px] sm:w-[150px] md:w-[180px] lg:w-[220px] inline-block cursor-pointer relative",
-        index === 0 || isLastMovie ? movieMargin : "mx-2 sm:mx-4 md:mx-7"
+        index === 0 || isLastMovie ? movieMargin : "mx-2 sm:mx-4 md:mx-7 mt-2"
       )}
     >
+      {isInfoModalOpen && (
+        <ChildModal
+          isChildModalOpen={isInfoModalOpen}
+          setIsChildModalOpen={setIsInfoModalOpen}
+        />
+      )}
       <img
         className="w-full h-auto block"
         src={movie.imagePath}
@@ -25,9 +36,15 @@ const MovieComponent = ({ movie, index, isLastMovie }) => {
           {movie.title}
         </p>
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row mt-1">
         <p>{movie.duration}</p>
-        <EventSeat className="ml-auto w-6 h-6 text-gray-900 border border-black rounded-full" />
+        <div className="flex flex-row gap-x-2 ml-auto">
+          <InformationCircleIcon
+            onClick={() => setIsInfoModalOpen(true)}
+            className="w-6 h-6 text-gray-900 hover:cursor-pointer my-auto"
+          />
+          <EventSeat className="w-5 h-5 text-gray-900 border border-black rounded-full my-auto" />
+        </div>
       </div>
     </div>
   );
