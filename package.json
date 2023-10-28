@@ -12,6 +12,7 @@
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "classnames": "^2.3.2",
+    "date-fns": "^2.30.0",
     "next": "latest",
     "react": "18.2.0",
     "react-awesome-reveal": "^4.1.0",

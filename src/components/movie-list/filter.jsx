@@ -19,17 +19,15 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
+const genre = [
+  "Adventure",
+  "Action",
+  "Comedy",
+  "Crime",
+  "Drama",
+  "Fantasy",
+  "Historical",
+  "Horror",
 ];
 
 function getStyles(name, personName, theme) {
@@ -72,7 +70,7 @@ const Filter = () => {
           )}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {genre.map((name) => (
             <MenuItem
               key={name}
               value={name}
