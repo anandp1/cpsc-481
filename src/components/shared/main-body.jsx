@@ -1,12 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
+import classNames from "classnames";
 import { Navigation } from "./navigation";
 import { SideCart } from "./side-cart";
 
-const MainBody = ({ children }) => {
+const MainBody = ({ children, isLanding }) => {
   return (
     <div className="bg-gray-200 bg-opacity-80">
       <div className="flex flex-row min-h-screen max-h-screen">
-        <div className="flex flex-col w-full">
+        <div
+          className={classNames(
+            "flex flex-col",
+            isLanding ? "w-3/4" : "w-full"
+          )}
+        >
           <div className="flex flex-row">
             <div className="w-1/2 text-center bg-gray-300 py-2 cursor-pointer rounded-tl-md">
               <p className="text-xl font-bold text-gray-700">Concessions</p>
