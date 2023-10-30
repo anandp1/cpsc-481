@@ -4,6 +4,7 @@ import {
   CalendarDaysIcon,
 } from "@heroicons/react/20/solid";
 import MovieComponent from "./movie";
+import MovieModal from "../modal/movie-modal";
 import React, { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
