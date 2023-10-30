@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const SideCart = () => {
   return (
@@ -24,9 +25,11 @@ const SideCart = () => {
           <p className="text-xl font-semibold">Total</p>
           <p className="text-xl text-green-600">$23.97</p>
         </div>
-        <button className="bg-blue-500 text-white text-2xl py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-          Checkout
-        </button>
+        <Link href="/checkout">
+          <button className="bg-blue-500 text-white text-2xl py-3 rounded-full w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+            Checkout
+          </button>
+        </Link>
       </div>
     </>
   );
