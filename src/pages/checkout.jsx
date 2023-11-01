@@ -28,7 +28,7 @@ export default function Checkout() {
   const handleLoyaltyClose = () => setIsLoyaltyModalOpen(false);
 
   return (
-    <Layout>
+    <Layout isCheckout={true}>
       {isCouponModalOpen && (
         <CouponModal
           isCouponModalOpen={isCouponModalOpen}

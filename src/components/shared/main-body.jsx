@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { Navigation } from "./navigation";
 import { SideCart } from "./side-cart";
 
-const MainBody = ({ children, isLanding }) => {
+const MainBody = ({ children, isLanding, isCheckout }) => {
   return (
     <div className="bg-gray-100">
       <div className="flex flex-row min-h-screen max-h-screen">
@@ -24,7 +24,7 @@ const MainBody = ({ children, isLanding }) => {
           {children}
           <Navigation />
         </div>
-        <SideCart />
+        <SideCart isCheckout={isCheckout} />
       </div>
     </div>
   );

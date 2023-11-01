@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const SideCart = () => {
+const SideCart = ({ isCheckout }) => {
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
@@ -27,7 +27,7 @@ const SideCart = () => {
         </div>
         <Link href="/checkout">
           <button className="bg-blue-500 text-white text-2xl py-3 rounded-full w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-            Checkout
+            {isCheckout ? "Finalize" : "Checkout"}
           </button>
         </Link>
       </div>
