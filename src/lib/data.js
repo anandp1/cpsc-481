@@ -109,4 +109,33 @@ const couponList = [
   },
 ];
 
-export { movieByTime, couponList };
+const swapList = [
+  {
+    imagePath:
+        "https://image.tmdb.org/t/p/w1280/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
+    title: "Saw X",
+    id: 1,
+    duration: "1h 58m",
+    seat: "D10",
+    startTime: "3:30 PM"
+  },
+];
+
+const scannedList = [
+  {
+    id: 1,
+    name: "Ticket 1",
+    title: "Saw X",
+    startTime: "3:30 PM",
+    seat: "D10"
+  },
+  {
+    id: 2,
+    name: "Ticket 2",
+    title: "Saw X",
+    startTime: "3:30 PM",
+    seat: "D11"
+  }
+]
+
+export { movieByTime, couponList, swapList, scannedList };
