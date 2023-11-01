@@ -4,7 +4,7 @@ import Link from "next/link";
 const SideCart = () => {
   return (
     <>
-      <div className="flex flex-col border-l w-1/3 bg-white rounded-lg shadow-lg p-4">
+      <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
         <div className="grid grid-cols-1 gap-2 divide-y">
           <div className="flex items-center justify-between py-3">
             <p className="text-2xl text-gray-800">General Admission</p>

@@ -6,7 +6,7 @@ import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft
 const Navigation = () => {
   return (
     <>
-      <nav className="relative flex flex-col sm:px-2 mt-auto w-full justify-evenly bg-gray-300 py-2">
+      <nav className="relative flex flex-col sm:px-2 mt-auto w-full justify-evenly bg-gray-300 py-2 z-1500">
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center">
             <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-900" />

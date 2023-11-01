@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       display: ["group-hover"],
+      zIndex: {
+        "1500": "1500",
+      },
     },
   },
 };
