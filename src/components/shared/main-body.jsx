@@ -5,7 +5,7 @@ import { SideCart } from "./side-cart";
 
 const MainBody = ({ children, isLanding }) => {
   return (
-    <div className="bg-gray-200 bg-opacity-80">
+    <div className="bg-gray-100">
       <div className="flex flex-row min-h-screen max-h-screen">
         <div
           className={classNames(
