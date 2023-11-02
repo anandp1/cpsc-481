@@ -1,6 +1,7 @@
-import { Box, Modal } from "@mui/material";
+import {Box, IconButton, Modal} from "@mui/material";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
+import {Close} from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -32,6 +33,14 @@ export const ChildModal = ({ isChildModalOpen, setIsChildModalOpen }) => {
             <p className="text-2xl font-bold text-gray-900">
               Avengers: Infinity War
             </p>
+            <IconButton onClick={handleClose}
+                        sx={{
+                          position: 'absolute',
+                          right: 4,
+                          top: 4,
+                        }}>
+              <Close />
+            </IconButton>
             <hr className="my-2 border-t border-gray-300" />
             <div className="text-gray-600 text-lg">
               <p>
@@ -75,6 +84,14 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
                 <p className="text-xl font-bold text-gray-900 truncate w-36">
                   Avengers: Infinity War
                 </p>
+                <IconButton onClick={handleClose}
+                            sx={{
+                              position: 'absolute',
+                              right: 4,
+                              top: 4,
+                            }}>
+                  <Close />
+                </IconButton>
                 <InformationCircleIcon
                   onClick={() => setIsChildModalOpen(true)}
                   className="w-6 h-6 text-gray-900 ml-2 hover:cursor-pointer"
