@@ -13,7 +13,7 @@ import { Close } from "@mui/icons-material";
 const style = {
   position: "absolute",
   top: "50%",
-  left: "50%",
+  left: "37.5%",
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
@@ -55,7 +55,7 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
         <Box sx={style}>
           <div className="flex flex-col bg-white">
             <p className="text-xl font-bold text-gray-900">
-              Enter Phone Number
+              Enter Member's Phone Number
             </p>
             <IconButton
               onClick={handleClose}
@@ -69,8 +69,9 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               margin="normal"
+              type="tel"
             />
-            <div className="flex justify-end" style = {{paddingTop: "10px"}}>
+            <div className="flex justify-end" style={{ paddingTop: "10px" }}>
               <button
                 className="bg-blue-500 text-white rounded-lg py-2 px-4 shadow-md hover:bg-blue-600"
                 onClick={handlePhoneSubmit}
@@ -109,7 +110,7 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
               inputProps={{ min: 0, max: availablePoints }}
             />
 
-            <div className="flex justify-end" style = {{paddingTop: "10px"}}>
+            <div className="flex justify-end" style={{ paddingTop: "10px" }}>
               <button
                 className="bg-blue-500 text-white rounded-lg py-2 px-4 shadow-md hover:bg-blue-600"
                 onClick={handlePointsSubmit}
