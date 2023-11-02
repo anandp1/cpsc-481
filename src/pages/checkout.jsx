@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Layout from "../components/shared/layout";
 import CouponModal from "../components/modal/coupon-modal";
+import LoyaltyPointsModal from "../components/modal/loyalty-modal";
 
 import {
   CreditCardIcon as DebitCardIcon,
@@ -34,6 +35,11 @@ export default function Checkout() {
           isCouponModalOpen={isCouponModalOpen}
           handleClose={handleCouponClose}
         />
+      )}
+      {isLoyaltyModalOpen && (
+        <LoyaltyPointsModal 
+        isLoyaltyModalOpen={isLoyaltyModalOpen}
+        handleClose={handleLoyaltyClose}/>
       )}
       <div className="grid grid-cols-3 grid-rows-6 gap-8 place-items-stretch grid-flow-col w-full h-full p-8">
         <div className="contents">
