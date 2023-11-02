@@ -20,7 +20,7 @@ export default function Showtime() {
             handleClose={handleClose}
           />
         )}
-        <div className="flex flex-col overflow-y-auto my-auto">
+        <div className="flex flex-col overflow-y-auto my-auto pb-16">
           <div className="flex flex-row justify-evenly">
             <MovieComponent
               movie={movieByTime["6:00"][0]}

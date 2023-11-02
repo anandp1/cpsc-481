@@ -9,7 +9,7 @@ const MainBody = ({ children, isLanding, isCheckout }) => {
       <div className="flex flex-row min-h-screen max-h-screen">
         <div
           className={classNames(
-            "flex flex-col",
+            "flex flex-col relative",
             isLanding ? "w-3/4" : "w-full"
           )}
         >

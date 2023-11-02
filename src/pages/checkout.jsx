@@ -37,11 +37,11 @@ export default function Checkout() {
         />
       )}
       {isLoyaltyModalOpen && (
-        <LoyaltyPointsModal 
-        isLoyaltyModalOpen={isLoyaltyModalOpen}
-        handleClose={handleLoyaltyClose}/>
+        <LoyaltyPointsModal
+          isLoyaltyModalOpen={isLoyaltyModalOpen}
+          handleClose={handleLoyaltyClose} />
       )}
-      <div className="grid grid-cols-3 grid-rows-6 gap-8 place-items-stretch grid-flow-col w-full h-full p-8">
+      <div className="grid grid-cols-3 grid-rows-6 gap-8 place-items-stretch grid-flow-col w-full h-full p-8 mb-16">
         <div className="contents">
           <div className="row-span-3 relative rounded-lg text-lg bg-gray-200/50 p-4 outline outline-2 outline-gray-400/70 outline-offset-8">
             <span className="absolute text-sm text-gray-600 bg-gray-100 px-1.5 -top-5 left-4">Member Information</span>

@@ -49,7 +49,7 @@ export default function MovieList() {
             </form>
             <Filter />
           </div>
-          <div className="flex flex-wrap space-y-2">
+          <div className="flex flex-wrap space-y-2 pb-16">
             {Object.values(movieByTime)
               .flat()
               .map((movie, index) => {
