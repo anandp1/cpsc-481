@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
 
-const MovieRow = ({ rowIndex, movieByTimeKey }) => {
+const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
   const slideLeft = () => {
     let slider = document.getElementById("slider" + rowIndex);
     if (slider) {
@@ -76,6 +76,7 @@ const MovieRow = ({ rowIndex, movieByTimeKey }) => {
                       isLastMovie={
                         movieByTime[movieByTimeKey].length - 1 === index
                       }
+                      isMainPage={isMainPage}
                     />
                   );
                 })}

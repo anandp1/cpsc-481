@@ -7,7 +7,14 @@ export default function Home() {
     <Layout isLanding={true}>
       <div className="flex flex-col overflow-y-auto my-2 pb-16">
         {Object.keys(movieByTime).map((time, index) => {
-          return <MovieRow key={time} rowIndex={index} movieByTimeKey={time} />;
+          return (
+            <MovieRow
+              key={time}
+              rowIndex={index}
+              movieByTimeKey={time}
+              isMainPage={true}
+            />
+          );
         })}
       </div>
     </Layout>
