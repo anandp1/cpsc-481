@@ -11,20 +11,20 @@ export default function MovieList() {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const handleClose = () => setIsMovieModalOpen(false);
 
-  const movieArray = Object.values(movieByTime).flat()
+  const movieArray = Object.values(movieByTime).flat();
   const movieList = movieArray.reduce((unique, o) => {
-    if (!unique.some(obj => obj.title === o.title)) {
+    if (!unique.some((obj) => obj.title === o.title)) {
       unique.push(o);
     }
     return unique;
-  }, [])
+  }, []);
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovieList, setFilteredMovieList] = useState(movieList);
 
   useEffect(() => {
     const newMovieList = movieList.filter((movie) => {
-      return movie.title.toLowerCase().includes(searchInput.toLowerCase())
+      return movie.title.toLowerCase().includes(searchInput.toLowerCase());
     });
     setFilteredMovieList(newMovieList);
   }, [searchInput]);
@@ -41,7 +41,10 @@ export default function MovieList() {
 
         <div className="flex flex-col my-2 overflow-y-auto">
           <div className="flex flex-row mx-7 mb-2 h-16">
-            <form onSubmit={(e) => e.preventDefault()} className="flex relative grow">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex relative grow"
+            >
               <input
                 type="search"
                 value={searchInput}
@@ -50,23 +53,27 @@ export default function MovieList() {
                 placeholder="Search Movies..."
               />
               {searchInput.length > 0 && (
-                <IconButton type="reset"
+                <IconButton
+                  type="reset"
                   onClick={() => setSearchInput("")}
                   sx={{
-                    position: 'absolute',
-                    right: '4rem',
-                    top: '50%',
-                    transform: 'translate(-10%, -50%)'
-                  }}>
+                    position: "absolute",
+                    right: "4rem",
+                    top: "50%",
+                    transform: "translate(-10%, -50%)",
+                  }}
+                >
                   <HighlightOff className="w-5 h-5 bg-red" />
                 </IconButton>
               )}
-              <button type="submit" className="w-16 rounded-tr-lg rounded-br-lg bg-blue-500 text-white hover:bg-blue-600 mt-2">
+              <button
+                type="submit"
+                className="w-16 rounded-tr-lg rounded-br-lg bg-blue-500 text-white hover:bg-blue-600 mt-2"
+              >
                 <Search />
               </button>
             </form>
             <Filter />
-
           </div>
           <div className="flex flex-wrap space-y-2 pb-16">
             {filteredMovieList.map((movie, index) => {
@@ -75,6 +82,7 @@ export default function MovieList() {
                   key={movie.title + index}
                   movie={movie}
                   setIsMovieModalOpen={setIsMovieModalOpen}
+                  isMainPage={false}
                 />
               );
             })}

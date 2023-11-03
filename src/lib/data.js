@@ -1,5 +1,5 @@
 const movieByTime = {
-  "6:00": [
+  "6:00PM-6:59PM": [
     {
       imagePath:
         "https://image.tmdb.org/t/p/w500/tuZhZ6biFMr5n9YSVuHOJnNL1uU.jpg",
@@ -7,6 +7,10 @@ const movieByTime = {
       id: 1,
       duration: "1h 43m",
       startTime: "6:20 PM",
+      genre: "Drama",
+      rating: "R",
+      description:
+        "Keller Dover (Hugh Jackman) faces a parent's worst nightmare when his 6-year-old daughter, Anna, and her friend go missing. The only lead is an old motorhome that had been parked on their street. The head of the investigation, Detective Loki (Jake Gyllenhaal), arrests the driver (Paul Dano), but a lack of evidence forces Loki to release his only suspect. Dover, knowing that his daughter's life is at stake, decides that he has no choice but to take matters into his own hands.",
     },
     {
       imagePath:
@@ -15,6 +19,8 @@ const movieByTime = {
       id: 2,
       duration: "1h 30m",
       startTime: "6:35 PM",
+      genre: "Action",
+      rating: "PG-13",
     },
     {
       imagePath:
@@ -23,6 +29,8 @@ const movieByTime = {
       id: 4,
       duration: "1h 25m",
       startTime: "6:20 PM",
+      genre: "Sci-Fi",
+      rating: "PG-13",
     },
     {
       imagePath:
@@ -31,9 +39,11 @@ const movieByTime = {
       id: 5,
       duration: "1h 10m",
       startTime: "6:10 PM",
+      genre: "Animation",
+      rating: "PG",
     },
   ],
-  "7:00": [
+  "7:00PM-7:59PM": [
     {
       imagePath:
         "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg",
@@ -41,6 +51,8 @@ const movieByTime = {
       id: 6,
       duration: "1h 45m",
       startTime: "7:20 PM",
+      genre: "Drama",
+      rating: "R",
     },
     {
       imagePath:
@@ -49,6 +61,8 @@ const movieByTime = {
       id: 4,
       duration: "1h 25m",
       startTime: "7:30 PM",
+      genre: "Sci-Fi",
+      rating: "PG-13",
     },
     {
       imagePath:
@@ -57,9 +71,11 @@ const movieByTime = {
       id: 5,
       duration: "1h 10m",
       startTime: "7:50 PM",
+      genre: "Animation",
+      rating: "PG",
     },
   ],
-  "8:00": [
+  "8:00PM-8:59PM": [
     {
       imagePath:
         "https://m.media-amazon.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_SX300.jpg",
@@ -67,6 +83,8 @@ const movieByTime = {
       id: 1,
       duration: "1h 30m",
       startTime: "8:20 PM",
+      genre: "Drama",
+      rating: "R",
     },
     {
       imagePath:
@@ -75,11 +93,11 @@ const movieByTime = {
       id: 1,
       duration: "1h 43m",
       startTime: "8:35 PM",
+      genre: "Drama",
+      rating: "R",
     },
   ],
 };
-// https://m.media-amazon.com/images/M/MV5BZjY5ZjQyMjMtMmEwOC00Nzc2LTllYTItMmU2MzJjNTg1NjY0XkEyXkFqcGdeQXVyNjQ1MTMzMDQ@._V1_SX300.jpg
-// drive
 
 const couponList = [
   {

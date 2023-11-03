@@ -47,12 +47,11 @@ function generateTimesHTML() {
   const timeColumns = [];
 
   for (let i = 0; i < 7; i++) {
-    const timesColumn = times.map((time,j) => (
+    const timesColumn = times.map((time, j) => (
       <div key={i} className="border border-gray-300 p-2">
         {time}
       </div>
     ));
-  
 
     timeColumns.push(
       <div key={i} className="grid grid-rows-7 gap-1">
@@ -62,7 +61,10 @@ function generateTimesHTML() {
   }
 
   return (
-    <div className="grid grid-cols-7 gap-2" style={{width: "1000px", height: "650px"}}>
+    <div
+      className="grid grid-cols-7 gap-2"
+      style={{ width: "1000px", height: "650px" }}
+    >
       {timeColumns}
     </div>
   );
