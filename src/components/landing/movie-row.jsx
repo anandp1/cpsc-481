@@ -27,6 +27,14 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const handleClose = () => setIsMovieModalOpen(false);
 
+  const sortedMovieByTime = movieByTime[movieByTimeKey].sort((a, b) => {
+    if (a.startTime < b.startTime) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
   return (
     <>
       {isMovieModalOpen && (
@@ -66,7 +74,7 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
                 id={"slider" + rowIndex}
                 className="w-full h-full mb-3 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative antialiased tracking-wider"
               >
-                {movieByTime[movieByTimeKey].map((movie, index) => {
+                {sortedMovieByTime.map((movie, index) => {
                   return (
                     <MovieComponent
                       setIsMovieModalOpen={setIsMovieModalOpen}
