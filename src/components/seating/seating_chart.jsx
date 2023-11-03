@@ -26,7 +26,7 @@ function generateChart() {
     return (
         <div className="grid grid-cols-10 gap-2" style={{width: "900px", height: "550px"}}>
             {buttons.map((button) => (
-                <button key={button.id} className="border border-gray-300 p-2">{button.label}</button>
+                <button key={button.id} className="border border-gray-300 bg-green-300 p-2">{button.label}</button>
             ))}
         </div>
     );
