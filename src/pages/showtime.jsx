@@ -14,7 +14,7 @@ export default function Showtime() {
   return (
     <>
       <Layout>
-        {isMovieModalOpen && (
+      {isMovieModalOpen && (
           <MovieModal
             isMovieModalOpen={isMovieModalOpen}
             handleClose={handleClose}
