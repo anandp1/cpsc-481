@@ -35,7 +35,7 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="flex flex-col bg-white rounded-lg p-4 shadow-lg gap-2">
+          <div className="flex flex-col bg-white rounded-lg p-4 pb-10 shadow-lg gap-2">
             <p className="text-xl font-bold text-gray-900">
               Refund
             </p>
@@ -91,7 +91,7 @@ const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="flex flex-col bg-white rounded-lg p-4 shadow-lg gap-2">
+          <div className="flex flex-col bg-white rounded-lg p-4 pb-10 shadow-lg gap-2">
             <div className="flex flex-row justify-center">
               <div className="flex">
                 <p className="text-xl font-bold text-gray-900">

@@ -43,7 +43,7 @@ const ScanModal = (props) => {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 330 }}>
-          <div className="bg-white rounded-lg p-4 shadow-lg max-h-80 overflow-y-auto">
+          <div className="bg-white rounded-lg p-4 pb-8 shadow-lg max-h-80 overflow-y-auto">
             <p className="text-xl font-bold text-gray-900">
               Scan Coupon
             </p>
