@@ -11,8 +11,7 @@ export default function Seating() {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const handleClose = () => setIsMovieModalOpen(false);
   const showingDate = new Date();
-  const day = format(showingDate, "E");
-  const date = format(showingDate, "d")
+  const date = format(showingDate, "EEEE, MMMM do")
 
   return (
     <>
@@ -23,31 +22,29 @@ export default function Seating() {
             handleClose={handleClose}
           />
         )}
-        <div className="flex flex-col overflow-y-auto my-auto">
+        <div className="flex flex-col overflow-y-auto my-auto pb-20">
           <div className="flex flex-row justify-evenly grid-row-3">
-            <div class="flex flex-col gap-10">
-                <MovieComponent
+            <div class="flex flex-col gap-4 items-center self-center">
+              <MovieComponent
                 movie={movieByTime["6:00PM-6:59PM"][0]}
                 setIsMovieModalOpen={setIsMovieModalOpen}
-                />
-                <label className="align-middle">{movieByTime["6:00PM-6:59PM"][0].startTime} {day} {date}</label>
-                <button className="bg-blue-500 text-white-2x1 py-5 rounded-full">
-                    Book
-                </button>
-
-                <div className="flex flex-col-3 gap-5">
-                    <button className="text-white">......</button>
-                    <button className="bg-green-300 border border-gray-500">available</button>
-                    <button className="bg-red-300 border border-gray-500">unavailable</button>
-                </div>
-            </div>
-              
-            <div className="flex flex-col">
-                <button className="bg-blue-100 border">screen </button>
-                <SeatingChart/>
+              />
+              <div className="flex flex-col gap-2 items-center font-semibold">
+                <span>{date}</span>
+                <span>
+                  {movieByTime["6:00PM-6:59PM"][0].startTime}
+                </span>
+              </div>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white text-2xl py-4 rounded-full w-3/4">
+                Book
+              </button>
             </div>
 
+            <div className="px-4 w-3/4">
+              <SeatingChart />
             </div>
+
+          </div>
         </div>
       </Layout>
     </>
