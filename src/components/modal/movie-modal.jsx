@@ -1,7 +1,7 @@
-import {Box, IconButton, Modal} from "@mui/material";
+import { Box, IconButton, Modal } from "@mui/material";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import React, { Fragment, useState } from "react";
-import {Close} from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -33,12 +33,14 @@ export const ChildModal = ({ isChildModalOpen, setIsChildModalOpen }) => {
             <p className="text-2xl font-bold text-gray-900">
               Avengers: Infinity War
             </p>
-            <IconButton onClick={handleClose}
-                        sx={{
-                          position: 'absolute',
-                          right: 4,
-                          top: 4,
-                        }}>
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                right: 4,
+                top: 4,
+              }}
+            >
               <Close />
             </IconButton>
             <hr className="my-2 border-t border-gray-300" />
@@ -84,12 +86,14 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
                 <p className="text-xl font-bold text-gray-900 truncate w-36">
                   Avengers: Infinity War
                 </p>
-                <IconButton onClick={handleClose}
-                            sx={{
-                              position: 'absolute',
-                              right: 4,
-                              top: 4,
-                            }}>
+                <IconButton
+                  onClick={handleClose}
+                  sx={{
+                    position: "absolute",
+                    right: 4,
+                    top: 4,
+                  }}
+                >
                   <Close />
                 </IconButton>
                 <InformationCircleIcon
@@ -100,7 +104,6 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
               <p className="text-gray-600">6:00 / 1h 30min</p>
             </div>
             <hr className="my-2 border-t border-gray-300" />
-
             <p className="text-center text-xl font-bold text-gray-900">
               General Admission
             </p>
@@ -115,7 +118,6 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
                 Senior
               </button>
             </div>
-
             <p className="text-center text-xl font-bold text-gray-900">
               Bundles
             </p>
@@ -130,6 +132,9 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
                 Thursday Deal
               </button>
             </div>
+            <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 mt-3">
+              Continue
+            </button>
           </div>
           {isChildModalOpen && (
             <ChildModal
