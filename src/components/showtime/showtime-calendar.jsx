@@ -63,7 +63,7 @@ function generateTimesHTML() {
   return (
     <div
       className="grid grid-cols-7 gap-2"
-      style={{ width: "1000px", height: "650px" }}
+      style={{ width: "900px", height: "650px" }}
     >
       {timeColumns}
     </div>
