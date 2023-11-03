@@ -4,6 +4,7 @@ import EventSeat from "@mui/icons-material/EventSeat";
 import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { ChildModal } from "../modal/movie-modal";
+import { NotInterestedOutlined } from "@mui/icons-material";
 
 const MovieComponent = ({
   movie,
@@ -45,12 +46,21 @@ const MovieComponent = ({
         alt={movie.title}
       />
       {isMainPage && (
-        <div className="flex flex-row mt-1">
-          <span className="flex flex-col">
+        <div className="flex flex-row mt-1 relative">
+          <div className="flex flex-col grow">
             <p>{movie.startTime}</p>
             <p>{movie.duration}</p>
-          </span>
-          <EventSeat className="w-5 h-5 text-gray-900 border border-black rounded-full ml-auto" />
+          </div>
+          {movie.capacity === 100 ?
+            <>
+              <EventSeat className="w-8 h-8 text-gray-900 absolute right-1 top-1" />
+              <NotInterestedOutlined className="w-10 h-10 text-red-600 absolute right-0" />
+            </>
+            :
+            <div className="flex flex-col items-center">
+              <EventSeat className="text-gray-900 border border-black rounded-full" />
+              <p className="text-center">{movie.capacity}%</p>
+            </div>}
         </div>
       )}
     </div>
