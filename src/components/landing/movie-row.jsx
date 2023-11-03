@@ -31,9 +31,10 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
   const sortedMovieByTime = movieByTime[movieByTimeKey].sort((a, b) => {
     if (a.startTime < b.startTime) {
       return -1;
-    } else {
+    } else if (a.startTime > b.startTime) {
       return 1;
     }
+    return 0;
   });
 
   return (
