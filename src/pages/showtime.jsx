@@ -25,6 +25,7 @@ export default function Showtime() {
             <MovieComponent
               movie={movieByTime["6:00"][0]}
               setIsMovieModalOpen={setIsMovieModalOpen}
+              isMainPage={false}
             />
             <div className="mt-2 flex flex-row">
               <ChevronLeftIcon className="  m-auto w-10 h-10 cursor-pointer opacity-40 hover:opacity-80 text-gray-900" />

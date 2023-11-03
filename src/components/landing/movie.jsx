@@ -5,7 +5,13 @@ import { useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { ChildModal } from "../modal/movie-modal";
 
-const MovieComponent = ({ movie, index, isLastMovie, setIsMovieModalOpen }) => {
+const MovieComponent = ({
+  movie,
+  index,
+  isLastMovie,
+  setIsMovieModalOpen,
+  isMainPage,
+}) => {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
   const movieMargin =
@@ -38,13 +44,15 @@ const MovieComponent = ({ movie, index, isLastMovie, setIsMovieModalOpen }) => {
         src={movie.imagePath}
         alt={movie.title}
       />
-      <div className="flex flex-row mt-1">
-        <span className="flex flex-col">
-          <p>{movie.startTime}</p>
-          <p>{movie.duration}</p>
-        </span>
-        <EventSeat className="w-5 h-5 text-gray-900 border border-black rounded-full ml-auto" />
-      </div>
+      {isMainPage && (
+        <div className="flex flex-row mt-1">
+          <span className="flex flex-col">
+            <p>{movie.startTime}</p>
+            <p>{movie.duration}</p>
+          </span>
+          <EventSeat className="w-5 h-5 text-gray-900 border border-black rounded-full ml-auto" />
+        </div>
+      )}
     </div>
   );
 };
