@@ -8,6 +8,7 @@ import MovieModal from "../modal/movie-modal";
 import React, { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
+import Link from "next/link";
 
 const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
   const slideLeft = () => {
@@ -53,8 +54,12 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
               {movieByTimeKey}
             </h2>
             {rowIndex === 0 && (
-              <div className="ml-auto border border-black mr-12 w-10 hover:cursor-pointer">
-                <CalendarDaysIcon className="w-6 h-6 text-gray-900 mt-0.5 mx-auto text-center" />
+              <div className="flex ml-auto mr-12 w-70 hover:cursor-pointer">
+                <Link href="/movie-list">
+                  <button className="flex bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 right-0">
+                    <CalendarDaysIcon className="w-6 h-6 mr-2" /> Movie List
+                  </button>
+                </Link>
               </div>
             )}
           </div>
