@@ -10,11 +10,11 @@ import { movieByTime } from "../lib/data";
 export default function Showtime() {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const handleClose = () => setIsMovieModalOpen(false);
-
+  const movie = movieByTime["6:00PM-6:59PM"][0];
   return (
     <>
       <Layout>
-      {isMovieModalOpen && (
+        {isMovieModalOpen && (
           <MovieModal
             isMovieModalOpen={isMovieModalOpen}
             handleClose={handleClose}
@@ -22,11 +22,28 @@ export default function Showtime() {
         )}
         <div className="flex flex-col overflow-y-auto my-auto pb-16">
           <div className="flex flex-row justify-evenly">
-            <MovieComponent
-              movie={movieByTime["6:00"][0]}
-              setIsMovieModalOpen={setIsMovieModalOpen}
-              isMainPage={false}
-            />
+            <div class="flex flex-col gap-2">
+              <MovieComponent
+                movie={movie}
+                setIsMovieModalOpen={setIsMovieModalOpen}
+                isMainPage={false}
+              />
+              <div class="border p-4 rounded-lg bg-gray-100 w-full sm:w-2/3 md:w-3/4 lg:w-4/5 mx-auto h-1/3 overflow-y-auto">
+                <strong class="text-xl font-semibold text-gray-700">
+                  Description
+                </strong>
+                <p class="text-gray-600">{movie.description}</p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-sm text-gray-600">
+                    Genre: {movie.genre}
+                  </span>
+                  <span class="text-sm text-gray-600">
+                    Rating: {movie.rating}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div className="mt-2 flex flex-row">
               <ChevronLeftIcon className="  m-auto w-10 h-10 cursor-pointer opacity-40 hover:opacity-80 text-gray-900" />
               <ShowtimeCalendar />
