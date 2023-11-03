@@ -105,31 +105,40 @@ const MovieModal = ({ isMovieModalOpen, handleClose }) => {
             </div>
             <hr className="my-2 border-t border-gray-300" />
             <p className="text-center text-xl font-bold text-gray-900">
-              General Admission
+              Admission
             </p>
             <div className="flex flex-row space-x-4 my-2 justify-center">
-              <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600">
+              <button className="bg-blue-500 text-white text-lg rounded-lg w-1/4 py-4 px-6 shadow-md hover:bg-blue-600">
                 Child
               </button>
-              <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600">
+              <button className="bg-blue-500 text-white text-lg rounded-lg py-4 px-6 shadow-md hover:bg-blue-600">
                 General
               </button>
-              <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600">
+              <button className="bg-blue-500 text-white text-lg rounded-lg py-4 p-6 shadow-md hover:bg-blue-600">
                 Senior
               </button>
             </div>
             <p className="text-center text-xl font-bold text-gray-900">
               Bundles
             </p>
-            <div className="flex flex-row space-x-4 justify-center">
+            <div className="flex flex-row flex-wrap justify-start h-24 overflow-y-auto gap-4 pl-4">
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
-                Monday Deal
+                Twosome
               </button>
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
-                Wednesday Deal
+                Kid's Day
               </button>
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
-                Thursday Deal
+                Morning
+              </button>
+              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
+                Senior's Day
+              </button>
+              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
+                Big Movie
+              </button>
+              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600">
+                10-Pack
               </button>
             </div>
             <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 mt-3">
