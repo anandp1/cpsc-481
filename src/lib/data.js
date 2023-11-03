@@ -1,5 +1,5 @@
 const movieByTime = {
-  "6:00": [
+  "6:00PM-6:59PM": [
     {
       imagePath:
         "https://image.tmdb.org/t/p/w500/tuZhZ6biFMr5n9YSVuHOJnNL1uU.jpg",
@@ -33,7 +33,7 @@ const movieByTime = {
       startTime: "6:10 PM",
     },
   ],
-  "7:00": [
+  "7:00PM-7:59PM": [
     {
       imagePath:
         "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg",
@@ -59,7 +59,7 @@ const movieByTime = {
       startTime: "7:50 PM",
     },
   ],
-  "8:00": [
+  "8:00PM-8:59PM": [
     {
       imagePath:
         "https://m.media-amazon.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_SX300.jpg",
