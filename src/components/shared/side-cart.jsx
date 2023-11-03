@@ -2,8 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { Box, Modal, IconButton, Popover } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
-import CloseIcon from '@mui/icons-material/Close';
+import { Send, Close, ShoppingCart, ShoppingCartCheckout, Print } from "@mui/icons-material";
 import CartItem from "./cart-item";
 
 const style = {
@@ -51,7 +50,7 @@ const SideCart = ({ isCheckout }) => {
         </div>
         <hr className="border-t-2 border-gray-300 my-4" />
         <button className="text-gray-600 hover:bg-gray-200 border border-gray-400/80 text-lg shadow-md py-2 rounded-full w-1/2 self-end" onClick={handleClearOpen}>
-          <CloseIcon className="w-6 h-6 -mt-1" /> Clear All
+          <Close className="w-6 h-6 -mt-1" /> Clear All
         </button>
         <Popover
           id={clearId}
@@ -88,10 +87,10 @@ const SideCart = ({ isCheckout }) => {
         <Link href="/checkout">
           {isCheckout ?
             <button className="bg-blue-500 text-white text-2xl py-3 rounded-full w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300" onClick={handleOpenModal}>
-              Finalize
+              <ShoppingCartCheckout className="w-6 h-6 mr-2" />Finalize
             </button> :
             <button className="bg-blue-500 text-white text-2xl py-3 rounded-full w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-              Checkout
+              <ShoppingCart className="w-6 h-6 mr-2" />Checkout
             </button>}
         </Link>
         <Modal
@@ -111,7 +110,7 @@ const SideCart = ({ isCheckout }) => {
                 padding: '0',
               }}
             >
-              <CloseIcon />
+              <Close />
             </IconButton>
             <h2 id="simple-modal-title" style={{
               textAlign: 'center',
@@ -141,7 +140,7 @@ const SideCart = ({ isCheckout }) => {
                 color: '#fff',
               }}
             >
-              Print
+              <Print /> Print
             </button>
             <form noValidate autoComplete="off">
               <label htmlFor="email-address-input" style={{ display: 'block', marginBottom: '10px', textAlign: 'center' }}>
@@ -172,7 +171,7 @@ const SideCart = ({ isCheckout }) => {
                     cursor: 'pointer',
                   }}
                 >
-                  <SendIcon />
+                  <Send />
                 </button>
               </div>
             </form>
