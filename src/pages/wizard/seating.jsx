@@ -2,7 +2,7 @@ import Layout from "../../components/shared/layout";
 import { movieByTime } from "../../lib/data";
 import { format } from "date-fns";
 import SeatingChart from "../../components/wizard/seating/seating_chart";
-import Progress from "../../components/wizard/progress";
+import Progress from "../../components/wizard/movie-progress";
 import MovieInformation from "../../components/wizard/movie-information";
 
 export default function Seating() {

@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import MovieComponent from "../../components/landing/movie";
 import Layout from "../../components/shared/layout";
 import MovieInformation from "../../components/wizard/movie-information";
-import Progress from "../../components/wizard/progress";
+import Progress from "../../components/wizard/movie-progress";
 import TicketSelection from "../../components/wizard/ticket/ticket-section";
 import { movieByTime } from "../../lib/data";
 
