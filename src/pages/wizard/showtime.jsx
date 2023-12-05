@@ -1,33 +1,20 @@
 import { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
-import MovieComponent from "../components/landing/movie";
-import MovieModal from "../components/modal/movie-modal";
-import Layout from "../components/shared/layout";
-import ShowtimeCalendar from "../components/showtime/showtime-calendar";
-import { movieByTime } from "../lib/data";
+import MovieComponent from "../../components/landing/movie";
+import Layout from "../../components/shared/layout";
+import ShowtimeCalendar from "../../components/showtime/showtime-calendar";
+import { movieByTime } from "../../lib/data";
 
 export default function Showtime() {
-  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
-  const handleClose = () => setIsMovieModalOpen(false);
   const movie = movieByTime["6:00PM-6:59PM"][0];
   return (
     <>
       <Layout>
-        {isMovieModalOpen && (
-          <MovieModal
-            isMovieModalOpen={isMovieModalOpen}
-            handleClose={handleClose}
-          />
-        )}
         <div className="flex flex-col overflow-y-auto my-auto pb-16">
           <div className="flex flex-row justify-evenly">
             <div class="flex flex-col gap-2">
-              <MovieComponent
-                movie={movie}
-                setIsMovieModalOpen={setIsMovieModalOpen}
-                isMainPage={false}
-              />
+              <MovieComponent movie={movie} isMainPage={false} />
               <div class="border p-4 rounded-lg bg-gray-100 w-full sm:w-2/3 md:w-3/4 lg:w-4/5 mx-auto h-1/3 overflow-y-auto">
                 <strong class="text-xl font-semibold text-gray-700">
                   Description
