@@ -30,6 +30,7 @@ const SessionProvider = ({ children }) => {
       child: 0,
       general: 0,
       senior: 0,
+      bundle: null,
     },
     // Add more initial state properties as needed
   });

@@ -2,7 +2,6 @@ import Layout from "../../components/shared/layout";
 import MovieInformation from "../../components/wizard/movie-information";
 import Progress from "../../components/wizard/movie-progress";
 import TicketSelection from "../../components/wizard/ticket/ticket-section";
-import { movies } from "../../lib/data";
 import { useSessionContext } from "../../contexts/SessionContext";
 
 export default function TicketPage() {

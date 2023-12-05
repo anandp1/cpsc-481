@@ -203,4 +203,6 @@ const scannedList = [
   },
 ];
 
-export { movies, movieByTime, couponList, swapList, scannedList };
+const bundles = ["Monday", "Wednesday", "Friday"];
+
+export { movies, movieByTime, couponList, swapList, scannedList, bundles };
