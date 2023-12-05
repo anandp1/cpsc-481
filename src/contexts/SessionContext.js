@@ -8,6 +8,15 @@ const sessionReducer = (state, action) => {
       return { ...state, selectedMovie: action.payload };
     case "SELECT_TICKETS":
       return { ...state, selectedTickets: action.payload };
+    case "SELECT_SHOWTIME":
+      return {
+        ...state,
+        selectedMovie: {
+          ...state.selectedMovie,
+          date: action.payload.date,
+          startTime: action.payload.startTime,
+        },
+      };
     // Add more cases as needed
     default:
       return state;

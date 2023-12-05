@@ -1,109 +1,112 @@
+const movies = [
+  {
+    id: 0,
+    imagePath:
+      "https://image.tmdb.org/t/p/w500/tuZhZ6biFMr5n9YSVuHOJnNL1uU.jpg",
+    title: "Prisoners",
+    duration: "1h 43m",
+    genre: "Drama",
+    rating: "R",
+    description:
+      "Keller Dover (Hugh Jackman) faces a parent's worst nightmare when his 6-year-old daughter, Anna, and her friend go missing. The only lead is an old motorhome that had been parked on their street. The head of the investigation, Detective Loki (Jake Gyllenhaal), arrests the driver (Paul Dano), but a lack of evidence forces Loki to release his only suspect. Dover, knowing that his daughter's life is at stake, decides that he has no choice but to take matters into his own hands.",
+  },
+  {
+    id: 1,
+    imagePath:
+      "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+    title: "Avengers: Infinity War",
+    duration: "1h 30m",
+    genre: "Action",
+    rating: "PG-13",
+  },
+  {
+    id: 2,
+    imagePath:
+      "https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
+    title: "Arrival",
+    duration: "1h 25m",
+    genre: "Sci-Fi",
+    rating: "PG-13",
+  },
+  {
+    id: 3,
+    imagePath:
+      "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    title: "Shrek",
+    duration: "1h 10m",
+    genre: "Animation",
+    rating: "PG",
+  },
+  {
+    id: 4,
+    imagePath:
+      "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg",
+    title: "Pulp Fiction",
+    duration: "1h 45m",
+    genre: "Drama",
+    rating: "R",
+  },
+  {
+    id: 5,
+    imagePath:
+      "https://m.media-amazon.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_SX300.jpg",
+    title: "Gone Girl",
+    duration: "1h 30m",
+    genre: "Drama",
+    rating: "R",
+  },
+];
+
 const movieByTime = {
   "6:00PM-6:59PM": [
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/tuZhZ6biFMr5n9YSVuHOJnNL1uU.jpg",
-      title: "Prisoners",
-      id: 1,
-      duration: "1h 43m",
+      ...movies[0],
       startTime: "6:20 PM",
       capacity: 70,
-      genre: "Drama",
-      rating: "R",
-      description:
-        "Keller Dover (Hugh Jackman) faces a parent's worst nightmare when his 6-year-old daughter, Anna, and her friend go missing. The only lead is an old motorhome that had been parked on their street. The head of the investigation, Detective Loki (Jake Gyllenhaal), arrests the driver (Paul Dano), but a lack of evidence forces Loki to release his only suspect. Dover, knowing that his daughter's life is at stake, decides that he has no choice but to take matters into his own hands.",
     },
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-      title: "Avengers: Infinity War",
-      id: 2,
-      duration: "1h 30m",
+      ...movies[1],
       startTime: "6:35 PM",
       capacity: 100,
-      genre: "Action",
-      rating: "PG-13",
     },
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
-      title: "Arrival",
-      id: 4,
-      duration: "1h 25m",
+      ...movies[2],
       startTime: "6:20 PM",
       capacity: 80,
-      genre: "Sci-Fi",
-      rating: "PG-13",
     },
     {
-      imagePath:
-        "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-      title: "Shrek",
-      id: 5,
-      duration: "1h 10m",
+      ...movies[3],
       startTime: "6:10 PM",
       capacity: 100,
-      genre: "Animation",
-      rating: "PG",
     },
   ],
   "7:00PM-7:59PM": [
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg",
-      title: "Pulp Fiction",
-      id: 6,
-      duration: "1h 45m",
+      ...movies[4],
       startTime: "7:20 PM",
       capacity: 60,
-      genre: "Drama",
-      rating: "R",
     },
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
-      title: "Arrival",
-      id: 4,
-      duration: "1h 25m",
+      ...movies[2],
       startTime: "7:30 PM",
       capacity: 80,
-      genre: "Sci-Fi",
-      rating: "PG-13",
     },
     {
-      imagePath:
-        "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-      title: "Shrek",
-      id: 5,
-      duration: "1h 10m",
+      ...movies[3],
       startTime: "7:50 PM",
       capacity: 95,
-      genre: "Animation",
-      rating: "PG",
     },
   ],
   "8:00PM-8:59PM": [
     {
-      imagePath:
-        "https://m.media-amazon.com/images/M/MV5BMTk0MDQ3MzAzOV5BMl5BanBnXkFtZTgwNzU1NzE3MjE@._V1_SX300.jpg",
-      title: "Gone Girl",
-      id: 1,
-      duration: "1h 30m",
+      ...movies[5],
       startTime: "8:20 PM",
       capacity: 100,
-      genre: "Drama",
-      rating: "R",
     },
     {
-      imagePath:
-        "https://image.tmdb.org/t/p/w500/tuZhZ6biFMr5n9YSVuHOJnNL1uU.jpg",
-      title: "Prisoners",
-      id: 1,
-      duration: "1h 43m",
+      ...movies[0],
       startTime: "8:35 PM",
       capacity: 70,
-      genre: "Drama",
-      rating: "R",
     },
   ],
 };
@@ -200,4 +203,4 @@ const scannedList = [
   },
 ];
 
-export { movieByTime, couponList, swapList, scannedList };
+export { movies, movieByTime, couponList, swapList, scannedList };

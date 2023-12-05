@@ -6,19 +6,29 @@ import { useSessionContext } from "../../contexts/SessionContext";
 import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { NotInterestedOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { format } from "date-fns";
 
-const MovieComponent = ({ movie, index, isLastMovie, isMainPage }) => {
+const MovieComponent = ({ movie, index, isLastMovie, isMainPage, isInfo }) => {
   const { dispatch } = useSessionContext();
   const router = useRouter();
 
   const handleMovieClick = () => {
-    dispatch({ type: "SELECT_MOVIE", payload: movie });
-    const movieId = movie.id;
-    const startTime = movie.startTime;
+    if (isInfo) return;
+    const showingDate = new Date();
+    const date = format(showingDate, "EEEE, MMMM do");
+
     if (isMainPage) {
-      router.push(`wizard/ticket?movieId=${movieId}&startTime=${startTime}`);
+      router.push(`wizard/ticket`);
+      dispatch({
+        type: "SELECT_MOVIE",
+        payload: { ...movie, date },
+      });
     } else {
-      router.push(`wizard/showtime?movieId=${movieId}`);
+      router.push(`wizard/showtime`);
+      dispatch({
+        type: "SELECT_MOVIE",
+        payload: { ...movie },
+      });
     }
   };
 
@@ -29,7 +39,9 @@ const MovieComponent = ({ movie, index, isLastMovie, isMainPage }) => {
   return (
     <div
       className={classNames(
-        "w-[130px] sm:w-[150px] md:w-[180px] lg:w-[220px] inline-block cursor-pointer relative",
+        `w-[130px] sm:w-[150px] md:w-[180px] lg:w-[220px] inline-block ${
+          !isInfo && "cursor-pointer"
+        } relative`,
         index === 0 || isLastMovie ? movieMargin : "mx-2 sm:mx-4 md:mx-7 mt-2"
       )}
       onClick={handleMovieClick}

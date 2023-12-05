@@ -4,20 +4,14 @@ import MovieComponent from "../components/landing/movie";
 import MovieModal from "../components/modal/movie-modal";
 import Filter from "../components/movie-list/filter";
 import Layout from "../components/shared/layout";
-import { movieByTime } from "../lib/data";
+import { movies } from "../lib/data";
 import { Search, HighlightOff } from "@mui/icons-material";
 
 export default function MovieList() {
   const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
   const handleClose = () => setIsMovieModalOpen(false);
 
-  const movieArray = Object.values(movieByTime).flat();
-  const movieList = movieArray.reduce((unique, o) => {
-    if (!unique.some((obj) => obj.title === o.title)) {
-      unique.push(o);
-    }
-    return unique;
-  }, []);
+  const movieList = movies.flat();
 
   const [searchInput, setSearchInput] = useState("");
   const [filteredMovieList, setFilteredMovieList] = useState(movieList);
