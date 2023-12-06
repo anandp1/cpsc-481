@@ -4,7 +4,15 @@ import { Popover } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { useSessionContext } from "../../contexts/SessionContext";
 
-const CartItem = ({ itemId, itemName, price, seatNumber, movie, isSwap }) => {
+const CartItem = ({
+  itemId,
+  itemName,
+  price,
+  seatNumber,
+  movie,
+  isSwap,
+  bundle,
+}) => {
   const { dispatch } = useSessionContext();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -31,15 +39,20 @@ const CartItem = ({ itemId, itemName, price, seatNumber, movie, isSwap }) => {
     <div className="flex items-center">
       <div className="flex flex-col gap-1 grow">
         <p className="text-xl text-gray-800 p-3 pl-1">
-          {isSwap ? "Swap - " + itemName : itemName}
+          {isSwap
+            ? "Swap - " + itemName
+            : bundle
+            ? "Bundle - " + itemName
+            : itemName}
         </p>
         <p className="text-sm text-gray-600">{movie.title}</p>
         <p className="text-sm text-gray-600">
           {movie.date}, {movie.startTime}
         </p>
         <p className="text-sm text-gray-600">Seat: {seatNumber}</p>
+        {bundle && <p className=" text-gray-600">Concession</p>}
       </div>
-      <p className="text-xl text-gray-800 py-3 px-4">${isSwap ? 0 : price}</p>
+      <p className="text-xl text-gray-800 py-3 px-4">${price}</p>
       <button
         onClick={handleClick}
         className="w-12 rounded-tr-lg rounded-br-lg bg-red-600 text-white hover:bg-red-700 py-3"

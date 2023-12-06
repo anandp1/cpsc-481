@@ -60,7 +60,7 @@ const sessionReducer = (state, action) => {
       return {
         ...state,
         usedPoints: action.payload,
-    };
+      };
     // Add more cases as needed
     default:
       return state;

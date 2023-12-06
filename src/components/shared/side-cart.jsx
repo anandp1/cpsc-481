@@ -11,7 +11,6 @@ import {
 } from "@mui/icons-material";
 import CartItem from "./cart-item";
 import { useSessionContext } from "../../contexts/SessionContext";
-import { handleCancelSwap } from "../../lib/helper";
 
 const style = {
   position: "absolute",
@@ -35,9 +34,18 @@ const SideCart = ({ isCheckout }) => {
   const [discount, setDiscount] = useState(0);
   const { usedPoints } = state;
 
+  const cartItems = state.cart;
+
   const calculateTotal = () => {
+    const numberOfBundles = cartItems.filter((item) => item.bundle).length;
+
     const discount = usedPoints / 100; // 100 points = $1 off
-    return state.cart.reduce((total, item) => total + item.price, 0) - discount;
+
+    return (
+      state.cart.reduce((total, item) => total + item.price, 0) -
+      discount +
+      numberOfBundles * 5
+    );
   };
 
   const handleOpenModal = () => {
@@ -63,12 +71,10 @@ const SideCart = ({ isCheckout }) => {
     setClearAnchor(null);
   };
 
-
-  const cartItems = state.cart;
   const totalPrice = calculateTotal().toFixed(2); // Calculate total price and format it
   useEffect(() => {
     if (cartItems.length === 0) {
-      dispatch({ type: 'SET_USED_POINTS', payload: 0 });
+      dispatch({ type: "SET_USED_POINTS", payload: 0 });
     }
   }, [cartItems, dispatch]);
 
@@ -84,6 +90,7 @@ const SideCart = ({ isCheckout }) => {
               price={item.price}
               seatNumber={item.seatNumber}
               movie={item.movie}
+              bundle={item.bundle}
               isSwap={item.isSwap}
             />
           ))}

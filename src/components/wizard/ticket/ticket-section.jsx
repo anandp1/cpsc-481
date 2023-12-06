@@ -65,8 +65,9 @@ const TicketSelection = () => {
 
       <Link href="/wizard/seating" className="text-white rounded-md mb-2 mt-20">
         <button
-          className="bg-green-500 text-white py-2 rounded-md hover:bg-green-600 w-full"
+          className="w-full ml-auto bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
           onClick={handleTicketSubmission}
+          disabled={Object.values(ticketMap).reduce((a, b) => a + b, 0) === 0}
         >
           Next
         </button>

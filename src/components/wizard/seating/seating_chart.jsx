@@ -75,9 +75,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "Child Ticket",
-          price: 9.75,
+          price: isChildSwap ? 0 : bundle ? 9.75 + 5 : 9.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isChildSwap,
         });
         i++;
@@ -87,9 +88,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "General Ticket",
-          price: 14.75,
+          price: isGeneralSwap ? 0 : bundle ? 14.75 + 5 : 14.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isGeneralSwap,
         });
         j++;
@@ -99,9 +101,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "Senior Ticket",
-          price: 10.75,
+          price: isSeniorSwap ? 0 : bundle ? 10.75 + 5 : 10.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isSeniorSwap,
         });
         k++;
@@ -116,7 +119,7 @@ const SeatingChart = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5">
       <div className="-mb-4 flex justify-between items-end">
         <div className="flex gap-4 items-end">
           <h2>Selected Tickets:</h2>
@@ -191,15 +194,7 @@ const SeatingChart = () => {
 
       <div className="flex justify-between">
         <button
-          className="w-1/5 bg-gray-100 border border-gray-300/80 text-black rounded-lg py-4 px-6 shadow-md hover:bg-gray-200"
-          onClick={() => {
-            router.replace("/wizard/ticket");
-          }}
-        >
-          Previous
-        </button>
-        <button
-          className="w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
+          className="ml-auto w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
           onClick={handleConfirm}
           disabled={selectedSeats.length !== ticketCount}
         >
