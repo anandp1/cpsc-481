@@ -32,7 +32,6 @@ The following features/functionalities have been implemented into our final desi
   * Can click on an **Available** or **Accessible** seat to select it. 
     * Can be clicked again to de-select the seat.
     * Clicking a new seat changes the seat selected earliest.
-  * Clicking the **Previous Button** clears all selected tickets, and returns you to the _Ticket Page_ for the movie.
   * Clicking the **Confirm Seating Button** returns to the _Landing Page_ and updates the **Cart.** 
 * **Cart**
   * Clicking on the **Trashcan Button** will prompt a popup asking to confirm item deletion. If confirmed, the item will be removed from the **Cart.**
