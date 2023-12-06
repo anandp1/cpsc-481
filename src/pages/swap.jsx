@@ -40,18 +40,18 @@ export default function Swap() {
       <div className="flex flex-row divide-x overflow-hidden">
         <div className="mx-4 my-auto flex flex-col">
           <p className="text-lg font-semibold truncate">
-            {scannedTicket.title}
+            {scannedTicket?.title}
           </p>
 
           <img
-            src={scannedTicket.imagePath}
+            src={scannedTicket?.imagePath}
             style={{ height: "auto", width: 250 }}
-            alt={scannedTicket.title}
+            alt={scannedTicket?.title}
           />
           <div className="flex flex-row">
-            <p className="text-lg text-gray-600">{scannedTicket.startTime}</p>
+            <p className="text-lg text-gray-600">{scannedTicket?.startTime}</p>
             <p className="text-lg text-gray-600 ml-auto">
-              Seat {scannedTicket.seat}
+              Seat {scannedTicket?.seat}
             </p>
           </div>
           <button
