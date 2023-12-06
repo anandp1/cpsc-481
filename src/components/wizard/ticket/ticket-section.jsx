@@ -5,10 +5,13 @@ import { bundles } from "../../../lib/data";
 import AdmissionButton from "./admission-button";
 
 const TicketSelection = () => {
+  const { state } = useSessionContext();
+  const scannedTicket = state.scannedTicket;
+
   const [ticketMap, setTicketMap] = useState({
-    Child: 0,
-    General: 0,
-    Senior: 0,
+    Child: scannedTicket?.admissionType === "Child" ? 1 : 0,
+    General: scannedTicket?.admissionType === "General" ? 1 : 0,
+    Senior: scannedTicket?.admissionType === "Senior" ? 1 : 0,
   });
   const [selectedBundle, setSelectedBundle] = useState();
   const { dispatch } = useSessionContext();

@@ -11,6 +11,7 @@ import {
 } from "@mui/icons-material";
 import CartItem from "./cart-item";
 import { useSessionContext } from "../../contexts/SessionContext";
+import { handleCancelSwap } from "../../lib/helper";
 
 const style = {
   position: "absolute",
@@ -69,6 +70,7 @@ const SideCart = ({ isCheckout }) => {
               price={item.price}
               seatNumber={item.seatNumber}
               movie={item.movie}
+              isSwap={item.isSwap}
             />
           ))}
         </div>

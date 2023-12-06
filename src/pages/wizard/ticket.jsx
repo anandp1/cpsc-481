@@ -13,6 +13,7 @@ export default function TicketPage() {
       <div className="flex flex-col overflow-y-auto my-auto pb-20">
         <div className="flex flex-row justify-evenly grid-row-3 divide-x">
           <MovieInformation movie={movie} />
+
           <div className="px-4 w-3/4">
             <Progress section="Tickets" />
             <TicketSelection />

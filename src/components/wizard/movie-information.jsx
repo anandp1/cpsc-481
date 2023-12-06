@@ -1,9 +1,14 @@
 import MovieComponent from "../landing/movie";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { useSessionContext } from "../../contexts/SessionContext";
+import { handleCancelSwap } from "../../lib/helper";
 
 const MovieInformation = ({ movie }) => {
   const router = useRouter();
+  const { state, dispatch } = useSessionContext();
+  const swapInProgress = state.scannedTicket;
 
   useEffect(() => {
     if (!movie) {
@@ -33,12 +38,19 @@ const MovieInformation = ({ movie }) => {
           <span className="text-sm text-gray-600">Genre: {movie.genre}</span>
           <span className="text-sm text-gray-600">Rating: {movie.rating}</span>
         </div>
-
-        <strong className="text-xl font-semibold text-gray-700 mt-2">
+        {/* <strong className="text-xl font-semibold text-gray-700 mt-2">
           Description
-        </strong>
-        <p className="text-gray-600">{movie.description}</p>
+          </strong>
+        <p className="text-gray-600">{movie.description}</p> */}
       </div>
+      {swapInProgress && (
+        <button
+          onClick={() => handleCancelSwap(dispatch)}
+          className="bg-red-600 text-white text-base py-2 px-6 rounded-full max-w-full align-middle hover:bg-red-700 focus:outline-none focus:bg-red-700 transition duration-300 mx-auto mt-2"
+        >
+          <Link href="/">Cancel Swap</Link>
+        </button>
+      )}
     </div>
   );
 };

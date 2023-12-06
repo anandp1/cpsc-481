@@ -44,6 +44,17 @@ const sessionReducer = (state, action) => {
           bundle: null,
         },
         selectedSeats: [],
+        scannedTicket: null,
+      };
+    case "SWAP_TICKET":
+      return {
+        ...state,
+        scannedTicket: action.payload,
+      };
+    case "CANCEL_SWAP":
+      return {
+        ...state,
+        scannedTicket: null,
       };
     // Add more cases as needed
     default:

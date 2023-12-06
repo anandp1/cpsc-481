@@ -183,6 +183,7 @@ const swapList = [
     duration: "1h 58m",
     seat: "D10",
     startTime: "3:30 PM",
+    admissionType: "General",
   },
 ];
 
@@ -193,6 +194,9 @@ const scannedList = [
     title: "Saw X",
     startTime: "3:30 PM",
     seat: "D10",
+    admissionType: "General",
+    imagePath:
+      "https://image.tmdb.org/t/p/w1280/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
   },
   {
     id: 2,
@@ -200,6 +204,9 @@ const scannedList = [
     title: "Saw X",
     startTime: "3:30 PM",
     seat: "D11",
+    admissionType: "General",
+    imagePath:
+      "https://image.tmdb.org/t/p/w1280/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
   },
 ];
 
