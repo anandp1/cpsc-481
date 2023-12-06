@@ -87,7 +87,7 @@ function generateTimesHTML() {
           ) : (
             <div className="flex flex-col items-center">
               <p className="text-center font-bold text-xs">{capacity}%</p>
-              <p className="text-center text-gray-600 text-xs">Available</p>
+              <p className="text-center text-gray-600 text-xs">Booked</p>
             </div>
           )}
         </button>

@@ -78,6 +78,22 @@ const SideCart = ({ isCheckout }) => {
     }
   }, [cartItems, dispatch]);
 
+  const ticketMap = {
+    "General Ticket": 0,
+    "Senior Ticket": 0,
+    "Child Ticket": 0,
+    Bundle: 0,
+  };
+
+  // populate ticketMap
+  console.log(cartItems);
+  cartItems.forEach((item) => {
+    if (item.bundle) {
+      ticketMap["Bundle"] += 1;
+    } else {
+      ticketMap[item.itemName] += 1;
+    }
+  });
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
@@ -202,11 +218,24 @@ const SideCart = ({ isCheckout }) => {
               id="simple-modal-description"
               style={{ marginBottom: "30px", textAlign: "center" }}
             >
-              {" "}
               {/* Centered text */}
               Tickets:
-              <br /> x2 General
-              <br /> x1 Child
+              {ticketMap["Bundle"] > 0 && <p>x{ticketMap["Bundle"]} Bundle</p>}
+              <p>
+                {ticketMap["Child Ticket"] > 0 && (
+                  <p> x{ticketMap["Child Ticket"]} Child </p>
+                )}
+                {ticketMap["General Ticket"] > 0 && (
+                  <>
+                    <p> x{ticketMap["General Ticket"]} General </p>
+                  </>
+                )}
+                {ticketMap["Senior Ticket"] > 0 && (
+                  <>
+                    <p> x{ticketMap["Senior Ticket"]} Senior </p>
+                  </>
+                )}
+              </p>
             </p>
             <button
               onClick={() => window.print()}
