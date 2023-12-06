@@ -59,7 +59,7 @@ const Seat = ({
     case "U":
       return (
         <div className="relative">
-          <EventSeat className="w-12 h-12 text-gray-500" />
+          <EventSeat className="w-12 h-12 text-red-500" />
           <Clear className="absolute w-10 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-100" />
         </div>
       );
