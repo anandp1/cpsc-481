@@ -6,10 +6,12 @@ import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft
 import ScannedTicketModal from "../modal/scanned-ticket-modal";
 import { handleCancelSwap } from "../../lib/helper";
 import { useSessionContext } from "../../contexts/SessionContext";
+import { useRouter } from "next/router";
 
 const Navigation = () => {
   const [isScannedTicketModalOpen, setIsScannedTicketModalOpen] =
     useState(false);
+  const router = useRouter();
   const handleClose = () => setIsScannedTicketModalOpen(false);
   const { dispatch } = useSessionContext();
 
@@ -44,11 +46,14 @@ const Navigation = () => {
           </div>
         </Link>
       </div>
-      <div className="absolute bottom-0 right-0 z-1500">
+      <button
+        className="absolute bottom-0 right-0 z-1500"
+        onClick={() => router.back()}
+      >
         <div className="flex items-center justify-center bg-gray-100 border border-gray-400/80 shadow-md rounded-tl-lg p-4 w-40 h-14 hover:bg-gray-200 hover:cursor-pointer">
           <SubdirectoryArrowLeftIcon className="w-8 h-8 text-gray-900" />
         </div>
-      </div>
+      </button>
     </>
   );
 };
