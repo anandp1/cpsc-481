@@ -8,7 +8,7 @@ const movies = [
     genre: "Drama",
     rating: "R",
     description:
-      "Keller Dover (Hugh Jackman) faces a parent's worst nightmare when his 6-year-old daughter, Anna, and her friend go missing. The only lead is an old motorhome that had been parked on their street. The head of the investigation, Detective Loki (Jake Gyllenhaal), arrests the driver (Paul Dano), but a lack of evidence forces Loki to release his only suspect. Dover, knowing that his daughter's life is at stake, decides that he has no choice but to take matters into his own hands.",
+      "The film follows the abduction of two young girls in Pennsylvania and the subsequent search for the perpetrator by the police. After police arrest a young suspect and release him, the father of one of the daughters takes matters into his own hands.",
   },
   {
     id: 1,
@@ -18,6 +18,8 @@ const movies = [
     duration: "1h 30m",
     genre: "Action",
     rating: "PG-13",
+    description:
+      "Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality.",
   },
   {
     id: 2,
@@ -27,6 +29,8 @@ const movies = [
     duration: "1h 25m",
     genre: "Sci-Fi",
     rating: "PG-13",
+    description:
+      "Linguist Louise Banks's daughter Hannah dies at the age of twelve from an incurable illness. Twelve extraterrestrial spacecraft hover over various locations around the Earth. In the ensuing widespread panic, affected nations send military and scientific experts to monitor and study them.",
   },
   {
     id: 3,
@@ -36,6 +40,8 @@ const movies = [
     duration: "1h 10m",
     genre: "Animation",
     rating: "PG",
+    description:
+      "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back. It's the story of a terrifying green ogre by the name of Shrek, who lives in a swamp.",
   },
   {
     id: 4,
@@ -45,6 +51,8 @@ const movies = [
     duration: "1h 45m",
     genre: "Drama",
     rating: "R",
+    description:
+      "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
   },
   {
     id: 5,
@@ -54,6 +62,8 @@ const movies = [
     duration: "1h 30m",
     genre: "Drama",
     rating: "R",
+    description:
+      "In Carthage, Mo., former New York-based writer Nick Dunne (Ben Affleck) and his glamorous wife Amy (Rosamund Pike) present a portrait of a blissful marriage to the public. However, when Amy goes missing on the couple's fifth wedding anniversary, Nick becomes the prime suspect in her disappearance.",
   },
 ];
 

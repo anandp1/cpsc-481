@@ -6,13 +6,11 @@ import { Close } from "@mui/icons-material";
 import {
   CreditCardIcon as DebitCardIcon,
   BanknotesIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ArrowsRightLeftIcon,
-  ReceiptRefundIcon,
-  CreditCardIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline"
+import { ArrowsRightLeftIcon, ReceiptRefundIcon, CreditCardIcon } from "@heroicons/react/24/solid";
+import { useRouter } from 'next/router';
 import { useSessionContext } from "../../contexts/SessionContext";
+
 
 const style = {
   position: "absolute",
@@ -26,12 +24,21 @@ const style = {
 };
 
 export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
+  const router = useRouter();
   const handleClose = () => {
     setIsRefundModalOpen(false);
   };
 
+  const handleRefund = () => {
+    // Close the modal
+    setIsRefundModalOpen(false);
+    // Redirect to the RefundSuccess page
+    router.push('/RefundSuccess');
+  };
+
+
   return (
-    <Fragment>
+    <div>
       <Modal
         open={isRefundModalOpen}
         onClose={handleClose}
@@ -40,9 +47,22 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
       >
         <Box sx={style}>
           <div className="flex flex-col bg-white rounded-lg p-4 pb-10 shadow-lg gap-2">
-            <p className="text-xl font-bold text-gray-900">Refund</p>
-            <IconButton
-              onClick={handleClose}
+          <div className="flex flex-row justify-center">
+              <div className="flex">
+                <p className="text-xl font-bold text-gray-900">
+                  Refund
+                </p>
+                <IconButton onClick={handleClose}
+                  sx={{
+                    position: 'absolute',
+                    right: 4,
+                    top: 4,
+                  }}>
+                  <Close />
+                </IconButton>
+              </div>
+            </div>
+            <IconButton onClick={handleClose}
               sx={{
                 position: "absolute",
                 right: 4,
@@ -69,23 +89,20 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
               Refund Options:
             </p>
             <div className="flex flex-row space-x-4 justify-center">
-              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <BanknotesIcon className="w-6 h-6 mr-2" />
-                Cash
+              <button onClick={handleRefund} className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
+                <BanknotesIcon className="w-6 h-6 mr-2" />Cash
               </button>
-              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <DebitCardIcon className="w-6 h-6 mr-2" />
-                Debit
+              <button onClick={handleRefund} className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
+                <DebitCardIcon className="w-6 h-6 mr-2" />Debit
               </button>
-              <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <CreditCardIcon className="w-6 h-6 mr-2" />
-                Credit
+              <button onClick={handleRefund} className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
+                <CreditCardIcon className="w-6 h-6 mr-2" />Credit
               </button>
             </div>
           </div>
         </Box>
       </Modal>
-    </Fragment>
+   </div>
   );
 };
 const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {

@@ -56,6 +56,11 @@ const sessionReducer = (state, action) => {
         ...state,
         scannedTicket: null,
       };
+    case "SET_USED_POINTS":
+      return {
+        ...state,
+        usedPoints: action.payload,
+    };
     // Add more cases as needed
     default:
       return state;
@@ -73,6 +78,7 @@ const SessionProvider = ({ children }) => {
     },
     selectedSeats: [],
     cart: [],
+    usedPoints: 0,
     // Add more initial state properties as needed
   });
 

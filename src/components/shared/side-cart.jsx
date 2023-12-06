@@ -32,6 +32,14 @@ const SideCart = ({ isCheckout }) => {
   const [clearAnchor, setClearAnchor] = useState(null);
   const clearOpen = Boolean(clearAnchor);
   const clearId = clearOpen ? "clear-popover" : undefined;
+  const [discount, setDiscount] = useState(0);
+  const { usedPoints } = state;
+
+  const calculateTotal = () => {
+    const discount = usedPoints / 100; // 100 points = $1 off
+    console.log("This is the state: " + state.usedPoints);
+    return state.cart.reduce((total, item) => total + item.price, 0) - discount;
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -57,7 +65,7 @@ const SideCart = ({ isCheckout }) => {
   };
 
   const cartItems = state.cart;
-
+  const totalPrice = calculateTotal().toFixed(2); // Calculate total price and format it
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
@@ -128,7 +136,7 @@ const SideCart = ({ isCheckout }) => {
         <div className="flex-grow"></div>
         <div className="flex items-center justify-between py-3">
           <p className="text-xl font-semibold">Total</p>
-          <p className="text-xl text-green-600">$23.97</p>
+          <p className="text-xl text-green-600">${totalPrice}</p>
         </div>
         <Link href="/checkout">
           {isCheckout ? (

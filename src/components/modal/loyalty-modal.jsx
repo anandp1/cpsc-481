@@ -7,11 +7,13 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Close } from "@mui/icons-material";
 import LoyaltyProgress from "../wizard/loyalty-progress";
 import { set } from "date-fns";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
+import { useSessionContext } from "../../contexts/SessionContext";
+
 
 const style = {
   position: "absolute",
@@ -27,26 +29,58 @@ const style = {
 const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
-  const [availablePoints, setAvailablePoints] = useState(0); // This should be fetched from an API based on the phone number
+  const [availablePoints, setAvailablePoints] = useState(500); 
   const [pointsToUse, setPointsToUse] = useState("");
+  const [showError, setShowError] = useState(false);
+  const acceptablePhoneNumber = "1234567890"; // Example phone number
+  const { dispatch } = useSessionContext();
+  const [pointsError, setPointsError] = useState(""); // New state for points error message
+
+  // Inside your component
+useEffect(() => {
+  console.log("Available Points: ", availablePoints);
+}, [availablePoints]);
+
 
   const [page, setPage] = useState(1);
 
   const handlePhoneSubmit = () => {
-    // Here you would typically fetch the available points from your backend
-    // For this example, we'll just set it to a fixed value
-    setAvailablePoints(500); // Assume 500 points available
-    setIsPointsModalOpen(true);
+    if (phoneNumber === acceptablePhoneNumber) {
+      setIsPointsModalOpen(true);
+      setShowError(false);
+      setPage(page + 1); // Move to the next page only if the phone number is valid
+    } else {
+      setShowError(true);
+    }
   };
+  
+  
 
   const handlePointsSubmit = () => {
-    // Here you would handle the logic to use the points
-    // For example, sending the data to your backend
-    console.log(`Using ${pointsToUse} points for phone number ${phoneNumber}`);
-    // Close the modal after submission
-    setIsPointsModalOpen(false);
-    handleClose();
+    const usedPoints = parseInt(pointsToUse, 10);
+    if (usedPoints > 0 && usedPoints <= availablePoints) {
+      // Use functional update to ensure you're working with the most recent state
+      setAvailablePoints(prevPoints => prevPoints - usedPoints);
+  
+      dispatch({
+        type: "SET_USED_POINTS",
+        payload: usedPoints,
+      });
+      setIsPointsModalOpen(false);
+      handleClose();
+      setPointsError(""); // Reset points error message
+    } else {
+      setPointsError("Invalid points amount. Please enter a valid number of points.");
+      setShowError(true);
+    }
   };
+  
+
+  const handleCloseSnackbar = () => {
+    setShowError(false);
+  };
+  
+  
 
   return (
     <div>
@@ -106,7 +140,6 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
                     className="bg-blue-500 text-white rounded-lg py-2 px-4 shadow-md hover:bg-blue-600"
                     onClick={() => {
                       handlePhoneSubmit();
-                      setPage(page + 1);
                     }}
                   >
                     Continue
@@ -144,6 +177,17 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
           </div>
         </Box>
       </Modal>
+     
+      <Snackbar
+        open={showError}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
+          {pointsError || "Please enter a valid phone number"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
