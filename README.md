@@ -45,6 +45,7 @@ The following features/functionalities have been implemented into our final desi
   * Clicking on  the **Loyalty Button** will open the _Loyalty Modal._
     * Once a valid phone number (see Data Entry for working number) is entered and **Continue** is pressed, the modal will swap to _Loyalty Points._
       * Enter a valid number of points (**>0** and **<Available Points**). Pressing **Submit** will reduce the total cost by 1 cent per point.
+  * Clicking on the **Finalize Button** will complete the transaction and allow the user to print or email the tickets.
 * **Scanned Ticket(s) Modal**
   * Can select a ticket by pressing the **ticket name.**
   * Can Select **Refund** to open the _Refund Modal._
