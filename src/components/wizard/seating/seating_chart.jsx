@@ -194,15 +194,7 @@ const SeatingChart = () => {
 
       <div className="flex justify-between">
         <button
-          className="w-1/5 bg-gray-100 border border-gray-300/80 text-black rounded-lg py-4 px-6 shadow-md hover:bg-gray-200"
-          onClick={() => {
-            router.replace("/wizard/ticket");
-          }}
-        >
-          Previous
-        </button>
-        <button
-          className="w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
+          className="ml-auto w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
           onClick={handleConfirm}
           disabled={selectedSeats.length !== ticketCount}
         >
