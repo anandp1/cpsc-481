@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/20/solid";
 import MovieComponent from "./movie";
 import MovieModal from "../modal/movie-modal";
-import React, { useState } from "react";
+import React from "react";
 import { Fade } from "react-awesome-reveal";
 import { movieByTime } from "../../lib/data";
 import Link from "next/link";
@@ -25,9 +25,6 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
     }
   };
 
-  const [isMovieModalOpen, setIsMovieModalOpen] = useState(false);
-  const handleClose = () => setIsMovieModalOpen(false);
-
   const sortedMovieByTime = movieByTime[movieByTimeKey].sort((a, b) => {
     if (a.startTime < b.startTime) {
       return -1;
@@ -39,12 +36,6 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
 
   return (
     <>
-      {isMovieModalOpen && (
-        <MovieModal
-          isMovieModalOpen={isMovieModalOpen}
-          handleClose={handleClose}
-        />
-      )}
       <Fade triggerOnce={true}>
         <div className="flex flex-col">
           <div className="flex flex-row my-6 h-full sm:ml-14">
@@ -83,7 +74,6 @@ const MovieRow = ({ rowIndex, movieByTimeKey, isMainPage }) => {
                 {sortedMovieByTime.map((movie, index) => {
                   return (
                     <MovieComponent
-                      setIsMovieModalOpen={setIsMovieModalOpen}
                       movie={movie}
                       key={movie.id}
                       index={index}

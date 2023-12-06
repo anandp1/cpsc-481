@@ -1,11 +1,25 @@
 const AdmissionButton = ({ ticketType, ticketMap, setTicketMap }) => {
+  const handleDecrease = () => {
+    setTicketMap((prevTicketMap) => ({
+      ...prevTicketMap,
+      [ticketType]: Math.max(prevTicketMap[ticketType] - 1, 0),
+    }));
+  };
+
+  const handleIncrease = () => {
+    setTicketMap((prevTicketMap) => ({
+      ...prevTicketMap,
+      [ticketType]: prevTicketMap[ticketType] + 1,
+    }));
+  };
+
   return (
     <form className="mx-auto">
       <div className="relative flex items-center max-w-[16rem]">
         {/* Decrease Button */}
         <button
           type="button"
-          onClick={() => setTicketMap(ticketMap[ticketType] - 1)}
+          onClick={handleDecrease}
           className="bg-gray-300 text-gray-700 hover:bg-gray-400 border border-gray-300 rounded-l-md p-3 h-11"
         >
           <svg
@@ -39,7 +53,7 @@ const AdmissionButton = ({ ticketType, ticketMap, setTicketMap }) => {
         {/* Increase Button */}
         <button
           type="button"
-          onClick={() => setTicketMap(ticketMap[ticketType] + 1)}
+          onClick={handleIncrease}
           className="bg-gray-300 text-gray-700 hover:bg-gray-400 border border-gray-300 rounded-r-md p-3 h-11"
         >
           <svg

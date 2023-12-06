@@ -8,6 +8,8 @@ const sessionReducer = (state, action) => {
       return { ...state, selectedMovie: action.payload };
     case "SELECT_TICKETS":
       return { ...state, selectedTickets: action.payload };
+    case "SELECT_SEATS":
+      return { ...state, selectedSeats: action.payload };
     case "SELECT_SHOWTIME":
       return {
         ...state,
@@ -16,6 +18,32 @@ const sessionReducer = (state, action) => {
           date: action.payload.date,
           startTime: action.payload.startTime,
         },
+      };
+    case "CART_SET_ITEMS":
+      return {
+        ...state,
+        cart: action.payload,
+      };
+    case "CART_REMOVE_ITEM":
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
+    case "CART_CLEAR":
+      return {
+        ...state,
+        cart: [],
+      };
+    case "CLEAR_SESSION":
+      return {
+        selectedMovie: null,
+        selectedTickets: {
+          child: 0,
+          general: 0,
+          senior: 0,
+          bundle: null,
+        },
+        selectedSeats: [],
       };
     // Add more cases as needed
     default:
@@ -30,7 +58,10 @@ const SessionProvider = ({ children }) => {
       child: 0,
       general: 0,
       senior: 0,
+      bundle: null,
     },
+    selectedSeats: [],
+    cart: [],
     // Add more initial state properties as needed
   });
 
