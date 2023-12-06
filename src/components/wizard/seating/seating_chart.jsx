@@ -75,9 +75,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "Child Ticket",
-          price: 9.75,
+          price: isChildSwap ? 0 : bundle ? 9.75 + 5 : 9.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isChildSwap,
         });
         i++;
@@ -87,9 +88,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "General Ticket",
-          price: 14.75,
+          price: isGeneralSwap ? 0 : bundle ? 14.75 + 5 : 14.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isGeneralSwap,
         });
         j++;
@@ -99,9 +101,10 @@ const SeatingChart = () => {
         newCartItems.push({
           id: index,
           itemName: "Senior Ticket",
-          price: 10.75,
+          price: isSeniorSwap ? 0 : bundle ? 10.75 + 5 : 10.75,
           seatNumber: seat,
           movie,
+          bundle,
           isSwap: isSeniorSwap,
         });
         k++;
