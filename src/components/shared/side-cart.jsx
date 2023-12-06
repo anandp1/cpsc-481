@@ -57,33 +57,12 @@ const SideCart = ({ isCheckout }) => {
   };
 
   const cartItems = state.cart;
-  const cartItemsWithSwap = cartItems.map((item) => {
-    const { state, dispatch } = useSessionContext();
 
-    const scannedTicket = state.scannedTicket;
-    console.log(scannedTicket);
-    if (
-      item.itemName === "General Ticket" &&
-      scannedTicket?.admissionType === "General"
-    ) {
-      console.log("here");
-      handleCancelSwap(dispatch);
-      return {
-        ...item,
-        isSwap: true,
-      };
-    }
-    return {
-      ...item,
-    };
-  });
-
-  console.log(cartItemsWithSwap);
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
         <div className="grid grid-cols-1 divide-y overflow-scroll">
-          {cartItemsWithSwap.map((item) => (
+          {cartItems.map((item) => (
             <CartItem
               key={item.id}
               itemId={item.id}
