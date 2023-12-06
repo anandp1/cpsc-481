@@ -36,10 +36,10 @@ const LoyaltyPointsModal = ({ isLoyaltyModalOpen, handleClose }) => {
   const { dispatch } = useSessionContext();
   const [pointsError, setPointsError] = useState(""); // New state for points error message
 
-  // Inside your component
-useEffect(() => {
-  console.log("Available Points: ", availablePoints);
-}, [availablePoints]);
+//   // Inside your component
+// useEffect(() => {
+//   console.log("Available Points: ", availablePoints);
+// }, [availablePoints]);
 
 
   const [page, setPage] = useState(1);

@@ -37,7 +37,6 @@ const SideCart = ({ isCheckout }) => {
 
   const calculateTotal = () => {
     const discount = usedPoints / 100; // 100 points = $1 off
-    console.log("This is the state: " + state.usedPoints);
     return state.cart.reduce((total, item) => total + item.price, 0) - discount;
   };
 
@@ -64,8 +63,15 @@ const SideCart = ({ isCheckout }) => {
     setClearAnchor(null);
   };
 
+
   const cartItems = state.cart;
   const totalPrice = calculateTotal().toFixed(2); // Calculate total price and format it
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      dispatch({ type: 'SET_USED_POINTS', payload: 0 });
+    }
+  }, [cartItems, dispatch]);
+
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
