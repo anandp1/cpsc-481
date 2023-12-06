@@ -1,7 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Seat from "./seat";
+import { useSessionContext } from "../../../contexts/SessionContext";
+import { useRouter } from "next/router";
 
 const SeatingChart = () => {
+  const { state, dispatch } = useSessionContext();
+  const movie = state.selectedMovie;
+  const tickets = state.selectedTickets;
+  const router = useRouter();
+  useEffect(() => {
+    if (!tickets) {
+      router.replace("/wizard/ticket");
+    } else {
+      let ticketCount = tickets.child + tickets.general + tickets.senior;
+      if (ticketCount === 0) {
+        router.replace("/wizard/ticket");
+      }
+    }
+  }, []);
+
+  if (!tickets) {
+    return <div>Loading...</div>;
+  }
+
+  const ticketCount = tickets.child + tickets.general + tickets.senior;
+
   const rows = [
     ["A", "A", null, "A", "U", "A", "A", "U", "A", "A"],
     ["A", "A", null, "A", "U", "U", "U", "A", "A"],
@@ -14,8 +37,86 @@ const SeatingChart = () => {
 
   const [selectedSeats, setSelectedSeats] = useState([]);
 
+  const handleConfirm = () => {
+    const seats = selectedSeats.map((seat) => {
+      seat = seat.split("-");
+      const rowNumber = parseInt(seat[0]) + 65;
+      const seatNumber = parseInt(seat[1]);
+      return `${String.fromCharCode(rowNumber)}${seatNumber}`;
+    });
+    dispatch({
+      type: "SELECT_SEATS",
+      payload: seats,
+    });
+    const newCartItems = [];
+    let i = 0,
+      j = 0,
+      k = 0;
+    seats.forEach((seat, index) => {
+      console.log(seat);
+      const { child, general, senior, bundle } = tickets;
+      if (i < child) {
+        newCartItems.push({
+          id: index,
+          itemName: "Child Ticket",
+          price: 9.75,
+          seatNumber: seat,
+          movie,
+        });
+        i++;
+        return;
+      }
+      if (j < general) {
+        newCartItems.push({
+          id: index,
+          itemName: "General Ticket",
+          price: 14.75,
+          seatNumber: seat,
+          movie,
+        });
+        j++;
+        return;
+      }
+      if (k < senior) {
+        newCartItems.push({
+          id: index,
+          itemName: "Senior Ticket",
+          price: 10.75,
+          seatNumber: seat,
+          movie,
+        });
+        k++;
+        return;
+      }
+    });
+    dispatch({
+      type: "CART_SET_ITEMS",
+      payload: [...state.cart, ...newCartItems],
+    });
+    router.replace("/");
+  };
+
   return (
     <div className="flex flex-col gap-10">
+      <div className="-mb-4 flex justify-between items-end">
+        <div className="flex gap-4 items-end">
+          <h2>Selected Tickets:</h2>
+          <div className="flex flex-col items-end">
+            <span className="text-sm">
+              Child: <span className="font-bold">{tickets.child}</span>
+            </span>
+            <span className="text-sm">
+              General: <span className="font-bold">{tickets.general}</span>
+            </span>
+            <span className="text-sm">
+              Senior: <span className="font-bold">{tickets.senior}</span>
+            </span>
+          </div>
+        </div>
+        <div className="pr-36">
+          Seats to select: <span className="font-bold">{ticketCount}</span>
+        </div>
+      </div>
       <div className="flex justify-center gap-4">
         <div className="flex flex-col gap-2">
           <div className="bg-gray-800 text-white text-center p-1 mb-2 rounded-full">
@@ -40,6 +141,7 @@ const SeatingChart = () => {
                     setSelectedSeats={setSelectedSeats}
                     rowIndex={rowIndex}
                     seatIndex={seatIndex}
+                    limit={ticketCount}
                   />
                 ) : (
                   <div
@@ -50,7 +152,7 @@ const SeatingChart = () => {
             </div>
           ))}
         </div>
-        <div className="flex gap-4 self-start bg-gray-100 border-2 border-gray-200 rounded-lg shadow-sm p-4 mb-2 text-sm">
+        <div className="flex flex-col gap-4 self-start bg-gray-100 border-2 border-gray-200 rounded-lg shadow-sm p-4 mb-2 text-sm">
           <h2 className="text-lg font-semibold">Legend:</h2>
           <div className="flex flex-col items-center">
             <Seat type="A" isLegend />
@@ -71,13 +173,16 @@ const SeatingChart = () => {
       <div className="flex justify-between">
         <button
           className="w-1/5 bg-gray-100 border border-gray-300/80 text-black rounded-lg py-4 px-6 shadow-md hover:bg-gray-200"
-          onClick={() => {}}
+          onClick={() => {
+            router.replace("/wizard/ticket");
+          }}
         >
           Previous
         </button>
         <button
-          className="w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600"
-          onClick={() => {}}
+          className="w-1/3 bg-green-500 text-white rounded-lg py-4 px-6 shadow-md hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-black"
+          onClick={handleConfirm}
+          disabled={selectedSeats.length !== ticketCount}
         >
           Confirm Seating
         </button>

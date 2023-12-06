@@ -18,18 +18,18 @@ const Seat = ({
   let isSelected;
   let handleClick;
   if (!isLegend) {
-    isSelected = selectedSeats.includes(`${rowIndex}${seatIndex}`);
+    isSelected = selectedSeats.includes(`${rowIndex}-${seatIndex}`);
     handleClick = () => {
       if (isSelected) {
         setSelectedSeats(
-          selectedSeats.filter((seat) => seat !== `${rowIndex}${seatIndex}`)
+          selectedSeats.filter((seat) => seat !== `${rowIndex}-${seatIndex}`)
         );
       } else {
         if (limit && selectedSeats.length >= limit) {
           const updatedSeats = selectedSeats.slice(1); // Pull the first item from the array
-          setSelectedSeats([...updatedSeats, `${rowIndex}${seatIndex}`]);
+          setSelectedSeats([...updatedSeats, `${rowIndex}-${seatIndex}`]);
         } else {
-          setSelectedSeats([...selectedSeats, `${rowIndex}${seatIndex}`]);
+          setSelectedSeats([...selectedSeats, `${rowIndex}-${seatIndex}`]);
         }
       }
     };

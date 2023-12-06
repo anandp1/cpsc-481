@@ -20,7 +20,7 @@ const TicketSelection = () => {
         child: ticketMap["Child"],
         general: ticketMap["General"],
         senior: ticketMap["Senior"],
-        selectedBundle,
+        bundle: selectedBundle,
       },
     });
   };

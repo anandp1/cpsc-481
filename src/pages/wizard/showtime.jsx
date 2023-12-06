@@ -4,7 +4,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import MovieInformation from "../../components/wizard/movie-information";
 import Layout from "../../components/shared/layout";
 import ShowtimeCalendar from "../../components/showtime/showtime-calendar";
-import { movies } from "../../lib/data";
 import { useSessionContext } from "../../contexts/SessionContext";
 
 export default function Showtime() {
