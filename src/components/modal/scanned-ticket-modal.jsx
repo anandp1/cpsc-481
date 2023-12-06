@@ -6,9 +6,12 @@ import { Close } from "@mui/icons-material";
 import {
   CreditCardIcon as DebitCardIcon,
   BanknotesIcon,
-} from "@heroicons/react/24/outline"
-import { ArrowsRightLeftIcon, ReceiptRefundIcon, CreditCardIcon } from "@heroicons/react/24/solid";
-
+} from "@heroicons/react/24/outline";
+import {
+  ArrowsRightLeftIcon,
+  ReceiptRefundIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/solid";
 
 const style = {
   position: "absolute",
@@ -36,15 +39,15 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
       >
         <Box sx={style}>
           <div className="flex flex-col bg-white rounded-lg p-4 pb-10 shadow-lg gap-2">
-            <p className="text-xl font-bold text-gray-900">
-              Refund
-            </p>
-            <IconButton onClick={handleClose}
+            <p className="text-xl font-bold text-gray-900">Refund</p>
+            <IconButton
+              onClick={handleClose}
               sx={{
-                position: 'absolute',
+                position: "absolute",
                 right: 4,
                 top: 4,
-              }}>
+              }}
+            >
               <Close />
             </IconButton>
             <hr className="my-2 border-t border-gray-300" />
@@ -53,10 +56,12 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
               Selected Tickets:
             </p>
             <p className="text-center text-xl text-gray-900 hover:bg-gray-300">
-              {scannedList[0].name} | {scannedList[0].startTime} {scannedList[0].title} - Seat {scannedList[0].seat}
+              {scannedList[0].name} | {scannedList[0].startTime}{" "}
+              {scannedList[0].title} - Seat {scannedList[0].seat}
             </p>
             <p className="text-center text-xl text-gray-900 hover:bg-gray-300">
-              {scannedList[1].name} | {scannedList[1].startTime} {scannedList[1].title} - Seat {scannedList[1].seat}
+              {scannedList[1].name} | {scannedList[1].startTime}{" "}
+              {scannedList[1].title} - Seat {scannedList[1].seat}
             </p>
             <br />
             <p className="text-center text-xl font-bold text-gray-900">
@@ -64,13 +69,16 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
             </p>
             <div className="flex flex-row space-x-4 justify-center">
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <BanknotesIcon className="w-6 h-6 mr-2" />Cash
+                <BanknotesIcon className="w-6 h-6 mr-2" />
+                Cash
               </button>
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <DebitCardIcon className="w-6 h-6 mr-2" />Debit
+                <DebitCardIcon className="w-6 h-6 mr-2" />
+                Debit
               </button>
               <button className="bg-green-500 text-white rounded-lg p-4 shadow-md hover:bg-green-600 flex place-content-center place-items-center">
-                <CreditCardIcon className="w-6 h-6 mr-2" />Credit
+                <CreditCardIcon className="w-6 h-6 mr-2" />
+                Credit
               </button>
             </div>
           </div>
@@ -81,6 +89,12 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
 };
 const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {
   const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
+
+  const [clickedIndex, setClickedIndex] = useState(null);
+
+  const handleButtonClick = (index) => {
+    setClickedIndex(index);
+  };
 
   return (
     <div>
@@ -97,32 +111,46 @@ const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {
                 <p className="text-xl font-bold text-gray-900">
                   Ticket(s) Scanned!
                 </p>
-                <IconButton onClick={handleClose}
+                <IconButton
+                  onClick={handleClose}
                   sx={{
-                    position: 'absolute',
+                    position: "absolute",
                     right: 4,
                     top: 4,
-                  }}>
+                  }}
+                >
                   <Close />
                 </IconButton>
               </div>
             </div>
             <hr className="my-2 border-t border-gray-300" />
             <br />
-            <button className="text-center text-xl text-gray-900 hover:bg-gray-300">
-              {scannedList[0].name} | {scannedList[0].startTime} {scannedList[0].title} - Seat {scannedList[0].seat}
-            </button>
-            <button className="text-center text-xl text-gray-900 hover:bg-gray-300">
-              {scannedList[1].name} | {scannedList[1].startTime} {scannedList[1].title} - Seat {scannedList[1].seat}
-            </button>
+            <div className="flex flex-col justify-center items-center">
+              {scannedList.map((item, index) => (
+                <button
+                  key={index}
+                  className={`text-center text-xl text-gray-900 ${
+                    clickedIndex === index ? "bg-gray-300" : "hover:bg-gray-300"
+                  } my-2`}
+                  onClick={() => handleButtonClick(index)}
+                >
+                  {item.name} | {item.startTime} {item.title} - Seat {item.seat}
+                </button>
+              ))}
+            </div>
             <br />
             <div className="flex flex-row space-x-4 justify-center">
-              <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 flex place-content-center place-items-center"
-                onClick={() => setIsRefundModalOpen(true)} >
+              <button
+                className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 flex place-content-center place-items-center"
+                onClick={() => setIsRefundModalOpen(true)}
+              >
                 <ReceiptRefundIcon className="w-6 h-6 mr-2" /> Refund
               </button>
               <Link href="/swap">
-                <button className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 flex place-content-center place-items-center" onClick={handleClose}>
+                <button
+                  className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 flex place-content-center place-items-center"
+                  onClick={handleClose}
+                >
                   <ArrowsRightLeftIcon className="w-6 h-6 mr-2" /> Swap
                 </button>
               </Link>

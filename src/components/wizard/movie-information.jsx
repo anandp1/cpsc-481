@@ -34,10 +34,10 @@ const MovieInformation = ({ movie }) => {
           <span className="text-sm text-gray-600">Rating: {movie.rating}</span>
         </div>
 
-        <strong className="text-xl font-semibold text-gray-700 mt-2">
+        {/* <strong className="text-xl font-semibold text-gray-700 mt-2">
           Description
         </strong>
-        <p className="text-gray-600">{movie.description}</p>
+        <p className="text-gray-600">{movie.description}</p> */}
       </div>
     </div>
   );
