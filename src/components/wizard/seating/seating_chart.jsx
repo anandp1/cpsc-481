@@ -119,7 +119,7 @@ const SeatingChart = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-5">
       <div className="-mb-4 flex justify-between items-end">
         <div className="flex gap-4 items-end">
           <h2>Selected Tickets:</h2>

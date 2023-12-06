@@ -11,7 +11,6 @@ import {
 } from "@mui/icons-material";
 import CartItem from "./cart-item";
 import { useSessionContext } from "../../contexts/SessionContext";
-import { handleCancelSwap } from "../../lib/helper";
 
 const style = {
   position: "absolute",
