@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import Seat from "./seat";
 import { useSessionContext } from "../../../contexts/SessionContext";
 import { useRouter } from "next/router";
+import { handleCancelSwap } from "../../../lib/helper";
 
 const SeatingChart = () => {
   const { state, dispatch } = useSessionContext();
   const movie = state.selectedMovie;
   const tickets = state.selectedTickets;
+  const scannedTicket = state.scannedTicket;
+
   const router = useRouter();
   useEffect(() => {
     if (!tickets) {
@@ -52,8 +55,21 @@ const SeatingChart = () => {
     let i = 0,
       j = 0,
       k = 0;
+    let swapFlag = true;
     seats.forEach((seat, index) => {
       console.log(seat);
+
+      const isChildSwap =
+        scannedTicket?.admissionType === "Child" && swapFlag ? true : false;
+      const isGeneralSwap =
+        scannedTicket?.admissionType === "General" && swapFlag ? true : false;
+      const isSeniorSwap =
+        scannedTicket?.admissionType === "Senior" && swapFlag ? true : false;
+      if (isChildSwap || isGeneralSwap || isSeniorSwap) {
+        handleCancelSwap(dispatch);
+        swapFlag = false;
+      }
+
       const { child, general, senior, bundle } = tickets;
       if (i < child) {
         newCartItems.push({
@@ -62,6 +78,7 @@ const SeatingChart = () => {
           price: 9.75,
           seatNumber: seat,
           movie,
+          isSwap: isChildSwap,
         });
         i++;
         return;
@@ -73,6 +90,7 @@ const SeatingChart = () => {
           price: 14.75,
           seatNumber: seat,
           movie,
+          isSwap: isGeneralSwap,
         });
         j++;
         return;
@@ -84,6 +102,7 @@ const SeatingChart = () => {
           price: 10.75,
           seatNumber: seat,
           movie,
+          isSwap: isSeniorSwap,
         });
         k++;
         return;

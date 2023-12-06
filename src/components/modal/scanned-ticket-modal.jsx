@@ -12,6 +12,7 @@ import {
   ReceiptRefundIcon,
   CreditCardIcon,
 } from "@heroicons/react/24/solid";
+import { useSessionContext } from "../../contexts/SessionContext";
 
 const style = {
   position: "absolute",
@@ -89,11 +90,19 @@ export const RefundModal = ({ isRefundModalOpen, setIsRefundModalOpen }) => {
 };
 const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {
   const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
+  const { dispatch } = useSessionContext();
 
   const [clickedIndex, setClickedIndex] = useState(null);
 
   const handleButtonClick = (index) => {
     setClickedIndex(index);
+  };
+
+  const handleSwapClick = () => {
+    dispatch({
+      type: "SWAP_TICKET",
+      payload: { ...scannedList[clickedIndex] },
+    });
   };
 
   return (
@@ -149,7 +158,10 @@ const ScannedTicketModal = ({ isScannedTicketModalOpen, handleClose }) => {
               <Link href="/swap">
                 <button
                   className="bg-blue-500 text-white rounded-lg p-4 shadow-md hover:bg-blue-600 flex place-content-center place-items-center"
-                  onClick={handleClose}
+                  onClick={() => {
+                    handleSwapClick();
+                    handleClose();
+                  }}
                 >
                   <ArrowsRightLeftIcon className="w-6 h-6 mr-2" /> Swap
                 </button>

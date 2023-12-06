@@ -4,10 +4,14 @@ import { ArrowLeftOnRectangleIcon, Bars4Icon } from "@heroicons/react/20/solid";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft";
 import ScannedTicketModal from "../modal/scanned-ticket-modal";
+import { handleCancelSwap } from "../../lib/helper";
+import { useSessionContext } from "../../contexts/SessionContext";
 
 const Navigation = () => {
-  const [isScannedTicketModalOpen, setIsScannedTicketModalOpen] = useState(false);
+  const [isScannedTicketModalOpen, setIsScannedTicketModalOpen] =
+    useState(false);
   const handleClose = () => setIsScannedTicketModalOpen(false);
+  const { dispatch } = useSessionContext();
 
   return (
     <>
@@ -30,7 +34,11 @@ const Navigation = () => {
         </div>
       </div>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-1500">
-        <Link href="/" draggable={false} >
+        <Link
+          href="/"
+          draggable={false}
+          onClick={() => handleCancelSwap(dispatch)}
+        >
           <div className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500 shadow-md border-4 border-white p-3 mb-2 hover:cursor-pointer">
             <HomeIcon className="w-8 h-8 text-white" />
           </div>

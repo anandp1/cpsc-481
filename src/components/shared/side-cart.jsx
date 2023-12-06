@@ -11,6 +11,7 @@ import {
 } from "@mui/icons-material";
 import CartItem from "./cart-item";
 import { useSessionContext } from "../../contexts/SessionContext";
+import { handleCancelSwap } from "../../lib/helper";
 
 const style = {
   position: "absolute",
@@ -56,12 +57,33 @@ const SideCart = ({ isCheckout }) => {
   };
 
   const cartItems = state.cart;
+  const cartItemsWithSwap = cartItems.map((item) => {
+    const { state, dispatch } = useSessionContext();
 
+    const scannedTicket = state.scannedTicket;
+    console.log(scannedTicket);
+    if (
+      item.itemName === "General Ticket" &&
+      scannedTicket?.admissionType === "General"
+    ) {
+      console.log("here");
+      handleCancelSwap(dispatch);
+      return {
+        ...item,
+        isSwap: true,
+      };
+    }
+    return {
+      ...item,
+    };
+  });
+
+  console.log(cartItemsWithSwap);
   return (
     <>
       <div className="flex flex-col border-l w-1/3 bg-white rounded-tl-lg shadow-lg p-4 z-1500">
         <div className="grid grid-cols-1 divide-y overflow-scroll">
-          {cartItems.map((item) => (
+          {cartItemsWithSwap.map((item) => (
             <CartItem
               key={item.id}
               itemId={item.id}
@@ -69,6 +91,7 @@ const SideCart = ({ isCheckout }) => {
               price={item.price}
               seatNumber={item.seatNumber}
               movie={item.movie}
+              isSwap={item.isSwap}
             />
           ))}
         </div>
